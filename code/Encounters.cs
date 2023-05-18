@@ -8,6 +8,7 @@ namespace Game
 {
     class Encounters
     {   
+        static Random rand =  new Random();
         //Encounter Generic
 
 
@@ -48,12 +49,17 @@ namespace Game
                 if (input.ToLower() == "a"||input.ToLower()=="attack")
                 {
                     //Attack
-                    Console.WriteLine(""); // https://youtu.be/EURyF4U5OKw?t=1742
+                    Console.WriteLine("with all your will and power you surge forth and slice your opnonent, as you swing your sword the "+n+" strikes back at you");
+                    int damage = p - Program.currentPlayer.armorValue;
+                    int attack = rand.Next(0, Program.currentPlayer.weaponValue) + rand.Next(1,4);
+                    Console.WriteLine("You lose "+ damage + "health and deal "+attack+" damage");
+                    Program.currentPlayer.health -= damage;
+                    h -= attack;
                 }
-                else if (input.ToLower() == "d"||input.ToLower()=="defend")
+                else if (input.ToLower() == "d"||input.ToLower()=="defend") //https://youtu.be/EURyF4U5OKw?t=2192
                 {
                     //Defend
-
+                    
                 }
                 else if (input.ToLower() == "r"||input.ToLower()=="run")
                 {
@@ -65,6 +71,7 @@ namespace Game
                     //Heal
 
                 }
+                Console.ReadKey();
             } 
         }
     }
