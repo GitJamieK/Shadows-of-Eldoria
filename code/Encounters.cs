@@ -25,7 +25,7 @@ namespace Game
         //Encounter tools
         public static void Combat(bool random, string name, int power, int health)
         {   
-            string n = "";
+            string n = " ";
             int p = 0;
             int h = 0;
             if (random)
