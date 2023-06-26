@@ -20,14 +20,34 @@ namespace Game
         {
             //choosing name
 
-            Console.WriteLine("Welcome to Temp_Game!");
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("\u001b[1m<>================================<>\u001b[0m");
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("\u001b[1m||\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/||\u001b[0m");
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("\u001b[1m||<Welcome to Shadows of Eldoria!>||\u001b[0m");
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("\u001b[1m||/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\||\u001b[0m");
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("\u001b[1m<>================================<>\u001b[0m");
+            Console.ResetColor();
             Console.Write("Press any key to continue.\n>");
             Console.ReadKey();
             Console.Clear();
             bool isNameValid = false;
             while (isNameValid == false)
             {
-                Console.WriteLine("What will your characters name be?");
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("\u001b[1m<>====================================<>\u001b[0m");
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("\u001b[1m||\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/||\u001b[0m");
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("\u001b[1m||<What will your characters name be?>||\u001b[0m");
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("\u001b[1m||/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\||\u001b[0m");
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("\u001b[1m<>====================================<>\u001b[0m");
+            Console.ResetColor();
             currentPlayer.name = Tools.ReadLine();
             Console.Clear();
                 if (currentPlayer.name == "")
@@ -37,18 +57,27 @@ namespace Game
                 }    
                 else
                 {
-                    Console.WriteLine("Are you sure you're name is "+ currentPlayer.name);
+                    Console.WriteLine("Are you sure your name is "+ currentPlayer.name);
                     Console.WriteLine("Please type 'Yes' or 'No'");
                     string inputname = Tools.ReadLine();
                     if (inputname.ToLower() == "no")
                     {
                         isNameValid = false;
+                        Console.Clear();
                     }
 
                     else if (inputname.ToLower() == "yes")
                     {
                         isNameValid = true;
-                        Console.WriteLine("Your name is "+currentPlayer.name);
+                        Console.ForegroundColor = ConsoleColor.Green;
+                        Console.WriteLine("\u001b[1m<>===========================<>\u001b[0m");
+                        Console.ForegroundColor = ConsoleColor.Green;
+                        Console.Write("\u001b[1m||<Your name is \u001b[0m");
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine(currentPlayer.name);
+                        Console.ForegroundColor = ConsoleColor.Green;
+                        Console.WriteLine("\u001b[1m<>===========================<>\u001b[0m");
+                        Console.ResetColor();
                     }
                 }    
             }
