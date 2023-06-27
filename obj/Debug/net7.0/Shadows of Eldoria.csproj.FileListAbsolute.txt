@@ -1,0 +1,15 @@
+D:\Work\Shadows of Eldoria\bin\Debug\net7.0\Shadows of Eldoria.exe
+D:\Work\Shadows of Eldoria\bin\Debug\net7.0\Shadows of Eldoria.deps.json
+D:\Work\Shadows of Eldoria\bin\Debug\net7.0\Shadows of Eldoria.runtimeconfig.json
+D:\Work\Shadows of Eldoria\bin\Debug\net7.0\Shadows of Eldoria.dll
+D:\Work\Shadows of Eldoria\bin\Debug\net7.0\Shadows of Eldoria.pdb
+D:\Work\Shadows of Eldoria\obj\Debug\net7.0\Shadows of Eldoria.csproj.AssemblyReference.cache
+D:\Work\Shadows of Eldoria\obj\Debug\net7.0\Shadows of Eldoria.GeneratedMSBuildEditorConfig.editorconfig
+D:\Work\Shadows of Eldoria\obj\Debug\net7.0\Shadows of Eldoria.AssemblyInfoInputs.cache
+D:\Work\Shadows of Eldoria\obj\Debug\net7.0\Shadows of Eldoria.AssemblyInfo.cs
+D:\Work\Shadows of Eldoria\obj\Debug\net7.0\Shadows of Eldoria.csproj.CoreCompileInputs.cache
+D:\Work\Shadows of Eldoria\obj\Debug\net7.0\Shadows of Eldoria.dll
+D:\Work\Shadows of Eldoria\obj\Debug\net7.0\refint\Shadows of Eldoria.dll
+D:\Work\Shadows of Eldoria\obj\Debug\net7.0\Shadows of Eldoria.pdb
+D:\Work\Shadows of Eldoria\obj\Debug\net7.0\Shadows of Eldoria.genruntimeconfig.cache
+D:\Work\Shadows of Eldoria\obj\Debug\net7.0\ref\Shadows of Eldoria.dll

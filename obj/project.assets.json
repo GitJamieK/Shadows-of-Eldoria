@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Work\\MY GAME\\MY GAME.csproj",
-      "projectName": "MY GAME",
-      "projectPath": "D:\\Work\\MY GAME\\MY GAME.csproj",
+      "projectUniqueName": "D:\\Work\\Shadows of Eldoria\\Shadows of Eldoria.csproj",
+      "projectName": "Shadows of Eldoria",
+      "projectPath": "D:\\Work\\Shadows of Eldoria\\Shadows of Eldoria.csproj",
       "packagesPath": "C:\\Users\\Jamie\\.nuget\\packages\\",
-      "outputPath": "D:\\Work\\MY GAME\\obj\\",
+      "outputPath": "D:\\Work\\Shadows of Eldoria\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Jamie\\AppData\\Roaming\\NuGet\\NuGet.Config",

@@ -8,11 +8,11 @@ namespace Game
 {
     class Program
     {
-
         public static Player currentPlayer = new Player();
         static void Main(string[] args)
         {
             Start();
+            Encounters.FirstEncounter();
         }
 
 
@@ -53,7 +53,7 @@ namespace Game
                 if (currentPlayer.name == "")
                 {
                     Console.WriteLine("You do not know your own name.");
-                    isNameValid = true;
+                    isNameValid = true; //fix so you have to choose a name
                 }    
                 else
                 {

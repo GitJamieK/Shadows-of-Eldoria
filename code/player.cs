@@ -10,7 +10,7 @@ namespace Game
     {
         public string name="";
         public int coins = 100; 
-        public int health = 50;
+        public int health = 10;
         public int damage = 10; 
         public int armorValue = 0;
         public int potion = 5;

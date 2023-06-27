@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v7.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v7.0": {
+      "Shadows of Eldoria/1.0.0": {
+        "runtime": {
+          "Shadows of Eldoria.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Shadows of Eldoria/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
