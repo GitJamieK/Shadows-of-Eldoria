@@ -56,7 +56,7 @@ namespace Game
                     Program.currentPlayer.health -= damage;
                     h -= attack;
                 }
-                else if (input.ToLower() == "d"||input.ToLower()=="defend") //https://youtu.be/EURyF4U5OKw?t=2192
+                else if (input.ToLower() == "d"||input.ToLower()=="defend")
                 {
                     //Defend
                     
