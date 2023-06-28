@@ -34,6 +34,7 @@ namespace Game
             Console.Write("Press any key to continue.\n>");
             Console.ReadKey();
             Console.Clear();
+            
             bool isNameValid = false;
             while (isNameValid == false)
             {
@@ -48,12 +49,12 @@ namespace Game
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("\u001b[1m<>====================================<>\u001b[0m");
             Console.ResetColor();
+            
             currentPlayer.name = Tools.ReadLine();
             Console.Clear();
                 if (currentPlayer.name == "")
                 {
-                    Console.WriteLine("You do not know your own name.");
-                    isNameValid = true; //fix so you have to choose a name
+                    isNameValid = false;
                 }    
                 else
                 {
@@ -68,6 +69,7 @@ namespace Game
 
                     else if (inputname.ToLower() == "yes")
                     {
+                        Console.Clear();
                         isNameValid = true;
                         Console.ForegroundColor = ConsoleColor.Green;
                         Console.WriteLine("\u001b[1m<>===========================<>\u001b[0m");

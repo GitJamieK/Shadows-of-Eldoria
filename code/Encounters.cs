@@ -48,7 +48,7 @@ namespace Game
                 Console.WriteLine("| (A)ttack (D)efend |");
                 Console.WriteLine("|   (R)un    (H)eal |");
                 Console.WriteLine("--------------------");
-                Console.WriteLine("  Potions: "+Program.currentPlayer.potion+"  Health: "+Program.currentPlayer.health);
+                Console.WriteLine("Potions: "+Program.currentPlayer.potion+"Health: "+Program.currentPlayer.health);
                 string input = Tools.ReadLine();
                 if (input.ToLower() == "a"||input.ToLower()=="attack")
                 {
@@ -114,7 +114,7 @@ namespace Game
                         int potionV = 5;
                         Console.WriteLine("You gain "+potionV+" health");
                         Program.currentPlayer.health += potionV;
-                        Console.WriteLine("As you were drinking the potion, the"+n+"snuck up on you and stuck.");
+                        Console.WriteLine("As you were drinking the potion, the "+n+" snuck up on you and stuck.");
                         int damage = (p/2)-Program.currentPlayer.armorValue;
                         if(damage<0)
                             damage=0;
