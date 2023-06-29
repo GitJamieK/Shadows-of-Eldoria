@@ -20,10 +20,38 @@ namespace Game
             Console.WriteLine("Press any key to continue\n>");
             Console.ReadKey();
             Console.Clear();
-            Combat(false, "Shadow warrior",1,4);
+            Combat(false, "Shadow Warrior",1,4);
+        }
+        public static void BasicFightEncounter()
+        {
+            Console.Clear();
+            Console.WriteLine("You hear something behind you, you turn and see a...");
+            Console.ReadKey();
+            Combat(true,"",0,0); //values are placeholders
+        }
+        public static void QueenEncounter() //TEMP
+        {
+            Console.Clear();
+            Console.WriteLine("TMEP_TMEP"); //wait, Write story.
+            Console.WriteLine("TMEP_TMEP"); //wait, Write story.
+            Console.ReadKey();
+            Combat(false, "Queen",5,2); //TEMP STATS
+        }
+        
+        //Encounter tools
+        public static void RandomEncounter()
+        {
+            switch(rand.Next(0,2))
+            {
+                case 0:
+                    BasicFightEncounter();
+                    break;
+                case 1:
+                    QueenEncounter();
+                    break;
+            }
         }
 
-        //Encounter tools
         public static void Combat(bool random, string name, int power, int health)
         {   
             string n = " ";
@@ -31,7 +59,9 @@ namespace Game
             int h = 0;
             if (random)
             {   
-
+                n = GetName();
+                p = rand.Next(1,5);
+                h = rand.Next(1,8);
             }
             else
             {
@@ -48,7 +78,7 @@ namespace Game
                 Console.WriteLine("| (A)ttack (D)efend |");
                 Console.WriteLine("|   (R)un    (H)eal |");
                 Console.WriteLine("--------------------");
-                Console.WriteLine("Potions: "+Program.currentPlayer.potion+"Health: "+Program.currentPlayer.health);
+                Console.WriteLine("Potions: "+Program.currentPlayer.potion+" Health: "+Program.currentPlayer.health);
                 string input = Tools.ReadLine();
                 if (input.ToLower() == "a"||input.ToLower()=="attack")
                 {
@@ -122,8 +152,37 @@ namespace Game
                     }
                     Console.ReadKey();
                 }
+                if(Program.currentPlayer.health<=0)
+                {
+                    //death
+                    Console.WriteLine("As the "+n+" stands tall above you as you faint and your vision turns black. You have been killed by the "+n);
+                    Console.ReadKey();
+                    System.Environment.Exit(0);
+                }
                 Console.ReadKey();
-            } 
+            }
+            int c = rand.Next(10,50);
+            Console.WriteLine("As you stand victorious over the dead "+n+" you find "+c+" gold coins!");
+            Program.currentPlayer.coins += c;
+            Console.ReadKey();
+        }
+
+        public static string GetName()
+        {
+            switch(rand.Next(0,4))
+            {
+                case 0:
+                    return "Small Shadow Warrior";
+                case 1:
+                    return "Big Shadow Warrior";
+                case 2:
+                    return "Huge Shadow Warrior";
+                case 3:
+                    return "Giant Shadow Warrior";
+                case 4:
+                    return "MINIBOSS Shadow Warrior";
+            }
+            return "Shadow Warrior";
         }
     }
 }
