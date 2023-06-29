@@ -162,7 +162,7 @@ namespace Game
                 Console.ReadKey();
             }
             int c = rand.Next(10,50);
-            Console.WriteLine("As you stand victorious over the dead "+n+" you find "+c+" gold coins!");
+            Console.WriteLine("\nAs you stand victorious over the dead "+n+" you find "+c+" gold coins!");
             Program.currentPlayer.coins += c;
             Console.ReadKey();
         }

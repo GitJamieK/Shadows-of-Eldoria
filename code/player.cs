@@ -9,7 +9,7 @@ namespace Game
     class Player
     {
         public string name="";
-        public int coins = 100; 
+        public int coins = 15; 
         public int health = 10;
         public int damage = 10; 
         public int armorValue = 0;
