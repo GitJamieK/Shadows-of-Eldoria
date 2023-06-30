@@ -72,8 +72,25 @@ namespace Game
             while (h>0)
             {
                 Console.Clear();
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.WriteLine("\u001b[1m<>================================<>\u001b[0m");
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.Write("\u001b[1m||\u001b[0m");
+                Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine(n);
-                Console.WriteLine(p+"/"+h);
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.WriteLine("\u001b[1m<>================================<>\u001b[0m");
+                Console.ResetColor();
+                Console.WriteLine("Power: "+p+"/ health: "+h);
+                Console.WriteLine("      .-.            ");
+                Console.WriteLine("    __|=|__          ");
+                Console.WriteLine("   (_/`-`\\_)         ");
+                Console.WriteLine("   //\\___/\\\\         ");
+                Console.WriteLine("   <>/   \\<>         ");
+                Console.WriteLine("    \\|_._|/          ");
+                Console.WriteLine("     <_I_>           ");
+                Console.WriteLine("      |||            ");
+                Console.WriteLine("     /_|_\\           ");
                 Console.WriteLine("--------------------");
                 Console.WriteLine("| (A)ttack (D)efend |");
                 Console.WriteLine("|   (R)un    (H)eal |");
