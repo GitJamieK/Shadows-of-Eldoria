@@ -80,7 +80,7 @@ namespace Game
                         Console.WriteLine("\u001b[1m<>===========================<>\u001b[0m");
                         Console.ForegroundColor = ConsoleColor.Green;
                         Console.Write("\u001b[1m||<Your name is \u001b[0m");
-                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.ForegroundColor = ConsoleColor.Blue;
                         Console.WriteLine(currentPlayer.name);
                         Console.ForegroundColor = ConsoleColor.Green;
                         Console.WriteLine("\u001b[1m<>===========================<>\u001b[0m");
