@@ -15,6 +15,7 @@ namespace Game
         //Encounters
         public static void FirstEncounter()
         {
+            Console.Clear();
             Console.WriteLine("You encounter a Shadow warrior!");
             Console.WriteLine("IT ATTACKS!");
             Console.WriteLine("Press any key to continue\n>");
