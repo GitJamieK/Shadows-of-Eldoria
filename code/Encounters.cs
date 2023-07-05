@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Game
 {
-    class Encounters
+    public class Encounters
     {   
         static Random rand =  new Random();
         //Encounter Generic
@@ -61,8 +61,8 @@ namespace Game
             if (random)
             {   
                 n = GetName();
-                p = rand.Next(1,5);
-                h = rand.Next(1,8);
+                p = Program.currentPlayer.GetPower();
+                h = Program.currentPlayer.GetHealth();
             }
             else
             {
@@ -144,7 +144,7 @@ namespace Game
                         //succed run
                         Console.WriteLine("You decide to take a chance and run away from "+n+", you manage to evade the incoming blow and successfully get away.");
                         Console.ReadKey();
-                        //go to store/home/castle
+                        Shop.LoadShop(Program.currentPlayer);
                     }
                 }
                 else if (input.ToLower() == "h"||input.ToLower()=="heal")
@@ -183,7 +183,7 @@ namespace Game
                 }
                 Console.ReadKey();
             }
-            int c = rand.Next(10,50);
+            int c = Program.currentPlayer.GetCoins();
             Console.WriteLine("\nAs you stand victorious over the dead "+n+" you find "+c+" gold coins!");
             Program.currentPlayer.coins += c;
             Console.ReadKey();
