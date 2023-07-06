@@ -172,8 +172,11 @@ namespace Game
             foreach (string p in paths)
             {
                 string jsonString = File.ReadAllText(p);
-                Player player = JsonSerializer.Deserialize<Player>(jsonString);
-                players.Add(player);
+                Player? player = JsonSerializer.Deserialize<Player>(jsonString);
+                if (player != null)
+                {
+                    players.Add(player);
+                }
             }
 
             idCount = players.Count;
