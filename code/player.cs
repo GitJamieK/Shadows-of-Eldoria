@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace Game
 {
+    [Serializable]
     public class Player
     {
-        Random rand = new Random();
-
         public string name="";
+        public int id;
         public int coins = 500000; //TEMP AMOUNT
         public int health = 10;
         public int damage = 1; 
@@ -24,19 +24,19 @@ namespace Game
         {
             int upper = (2*mods+5);
             int lower = (mods+2);
-            return rand.Next(lower,upper);
+            return Program.rand.Next(lower,upper);
         }
         public int GetPower()
         {
             int upper = (2*mods+2);
             int lower = (mods+1);
-            return rand.Next(lower,upper);
+            return Program.rand.Next(lower,upper);
         }
         public int GetCoins()
         {
             int upper = (15*mods+50);
             int lower = (10*mods+10);
-            return rand.Next(lower,upper);
+            return Program.rand.Next(lower,upper);
         }
     }
 }

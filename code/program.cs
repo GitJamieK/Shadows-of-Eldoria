@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
+using System.Text.Json;
 
 namespace Game
 {
@@ -10,10 +12,16 @@ namespace Game
     {
         public static Player currentPlayer = new Player();
         public static bool mainLoop = true;
+        public static Random rand = new Random();
         static void Main(string[] args)
         {
-            Start();
-            Encounters.FirstEncounter();
+            if(!Directory.Exists("saves"))
+            {
+                Directory.CreateDirectory("saves");
+            }
+            currentPlayer = Load(out bool newP);
+            if(newP)
+                Encounters.FirstEncounter();
             while(mainLoop)
             {
                 Encounters.RandomEncounter();
@@ -21,10 +29,11 @@ namespace Game
         }
 
 
-        static void Start()
+        static Player NewStart(int i)
         {
             //choosing name
-
+            Console.Clear();
+            Player p = new Player();
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("\u001b[1m<>================================<>\u001b[0m");
             Console.ForegroundColor = ConsoleColor.Green;
@@ -55,15 +64,16 @@ namespace Game
             Console.WriteLine("\u001b[1m<>====================================<>\u001b[0m");
             Console.ResetColor();
             
-            currentPlayer.name = Tools.ReadLine();
+            p.name = Tools.ReadLine();
+            p.id = i;
             Console.Clear();
-                if (currentPlayer.name == "")
+                if (p.name == "")
                 {
                     isNameValid = false;
                 }    
                 else
                 {
-                    Console.WriteLine("Are you sure your name is "+ currentPlayer.name);
+                    Console.WriteLine("Are you sure your name is "+ p.name);
                     Console.WriteLine("Please type 'Yes' or 'No'");
                     string inputname = Tools.ReadLine();
                     if (inputname.ToLower() == "no")
@@ -81,7 +91,7 @@ namespace Game
                         Console.ForegroundColor = ConsoleColor.Green;
                         Console.Write("\u001b[1m||<Your name is \u001b[0m");
                         Console.ForegroundColor = ConsoleColor.Blue;
-                        Console.WriteLine(currentPlayer.name);
+                        Console.WriteLine(p.name);
                         Console.ForegroundColor = ConsoleColor.Green;
                         Console.WriteLine("\u001b[1m<>===========================<>\u001b[0m");
                         Console.ResetColor();
@@ -122,7 +132,7 @@ namespace Game
             Console.WriteLine("");
             Console.Write("Your name is ");
             Console.ForegroundColor = ConsoleColor.Blue;
-            Console.WriteLine(currentPlayer.name+".");
+            Console.WriteLine(p.name+".");
             Console.ForegroundColor = ConsoleColor.DarkMagenta;
             Console.WriteLine("You are one of the three knights who are the mightiest in all of Eldoria!");
             Console.WriteLine("The worker nearby in your room tells you quickly about about the tragedy happing in the land of Eldoria at this very moment.");
@@ -134,7 +144,107 @@ namespace Game
             Console.ReadKey();
 
 
-            
+            return p;
+        }
+        
+        public static void Quit()
+        {
+            Save();
+            Environment.Exit(0);
+        }
+
+        //saves
+        public static void Save()
+        {
+            string path = "saves/" + currentPlayer.id.ToString() + ".player";
+            string jsonString = JsonSerializer.Serialize(currentPlayer);
+            File.WriteAllText(path, jsonString);
+        }
+
+        public static Player Load(out bool newP)
+        {
+            newP = false;
+            Console.Clear();
+            string[] paths = Directory.GetFiles("saves");
+            List<Player> players = new List<Player>();
+            int idCount=0;
+
+            foreach (string p in paths)
+            {
+                string jsonString = File.ReadAllText(p);
+                Player player = JsonSerializer.Deserialize<Player>(jsonString);
+                players.Add(player);
+            }
+
+            idCount = players.Count;
+
+            while(true)
+            {
+                Console.Clear();
+                Console.WriteLine("Choose your save:");
+                
+                foreach (Player p in players)
+                {
+                    Console.WriteLine(p.id+": "+p.name);
+                }
+                Console.WriteLine("Please input player name or id (id:# or playername). 'create' will start a new save!");
+                string[] data = Tools.ReadLine().Split(':');
+
+                try
+                {
+                    if(data[0]=="id")
+                    {
+                        if(int.TryParse(data[1],out int id))
+                        {
+                            foreach (Player player in players)
+                            {
+                                if(player.id==id)
+                                {
+                                    return player;
+                                }
+                            }
+                            Console.WriteLine("There is no player with that id!");
+                            Console.WriteLine("");
+                            Console.Write("Press any key to continue.\n>");
+                            Console.ReadKey();
+                        }
+                        else
+                        {
+                            Console.WriteLine("Your id needs to be a number!");
+                            Console.WriteLine("");
+                            Console.Write("Press any key to continue.\n>");
+                            Console.ReadKey();
+                        }
+                    }
+                    else if(data[0]=="create")
+                    {
+                        Player newPlayer = NewStart(idCount);
+                        newP = true;
+                        return newPlayer;
+                    }
+                    else
+                    {
+                        foreach (Player player in players)
+                        {
+                            if(player.name==data[0])
+                            {
+                                return player;
+                            }
+                        }
+                        Console.WriteLine("There is no player with that name!");
+                        Console.WriteLine("");
+                        Console.Write("Press any key to continue.\n>");
+                        Console.ReadKey();
+                    }
+                }
+                catch(IndexOutOfRangeException)
+                {
+                    Console.WriteLine("Your id needs to be a number!");
+                    Console.WriteLine("");
+                    Console.Write("Press any key to continue.\n>");
+                    Console.ReadKey();
+                }
+            }
         }
     }
 }

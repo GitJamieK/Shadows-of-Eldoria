@@ -43,6 +43,8 @@ namespace Game
                 Console.ForegroundColor = ConsoleColor.Blue;
                 Console.WriteLine("\u001b[1m|(E)xit             |\u001b[0m");
                 Console.ForegroundColor = ConsoleColor.Blue;
+                Console.WriteLine("\u001b[1m|(Q)uit Game        |\u001b[0m");
+                Console.ForegroundColor = ConsoleColor.Blue;
                 Console.WriteLine("\u001b[1m<>==================<>\u001b[0m");
                 Console.WriteLine("");
                 Console.WriteLine("");
@@ -81,6 +83,10 @@ namespace Game
                 else if(input=="d"||input=="difficulty mod")
                 {
                     TryBuy("dif", difP, p);
+                }
+                else if(input=="q"||input=="quit")
+                {
+                    Program.Quit();
                 }
                 else if(input=="e"||input=="exit")
                     break;
