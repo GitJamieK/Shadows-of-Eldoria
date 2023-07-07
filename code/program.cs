@@ -184,13 +184,13 @@ namespace Game
             while(true)
             {
                 Console.Clear();
-                Console.WriteLine("Choose your save:");
+                Print("Choose your save:",60);
                 
                 foreach (Player p in players)
                 {
                     Console.WriteLine(p.id+": "+p.name);
                 }
-                Console.WriteLine("Please input player name or id (id:# or playername). 'create' will start a new save!");
+                Print("Please input player name or id (id:# or playername). 'create' will start a new save!");
                 string[] data = Tools.ReadLine().Split(':');
 
                 try
@@ -248,6 +248,15 @@ namespace Game
                     Console.ReadKey();
                 }
             }
+        }
+        public static void Print(string text, int speed=40)
+        {
+            foreach (char c in text)
+            {
+                Console.Write(c);
+                System.Threading.Thread.Sleep(speed);
+            }
+            Console.WriteLine("");
         }
     }
 }
