@@ -20,6 +20,9 @@ namespace Game
 
         public int mods = 0;
 
+        public enum PLayerClass {Mage, Archer, Warrior};
+        public PLayerClass currentClass = PLayerClass.Warrior;
+
         public int GetHealth()
         {
             int upper = (2*mods+5);

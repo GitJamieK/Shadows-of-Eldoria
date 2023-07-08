@@ -5,7 +5,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 using System.Text.Json;
-using System.Media;
 
 namespace Game
 {
@@ -66,6 +65,24 @@ namespace Game
             Console.ResetColor();
             
             p.name = Tools.ReadLine();
+            Print("Class: Mage  Archer  Warrior");
+            bool flag = false;
+            while(flag==false)
+            {
+                flag=true;
+                string input = Tools.ReadLine().ToLower();
+                if(input=="mage")
+                    p.currentClass = Player.PLayerClass.Mage;
+                else if(input=="archer")
+                    p.currentClass = Player.PLayerClass.Archer;
+                else if(input=="warrior")
+                    p.currentClass = Player.PLayerClass.Warrior;
+                else
+                {
+                    Console.WriteLine("Please choose an existing class!");
+                    flag = false;
+                }
+            }
             p.id = i;
             Console.Clear();
                 if (p.name == "")
@@ -74,7 +91,15 @@ namespace Game
                 }    
                 else
                 {
-                    Console.WriteLine("Are you sure your name is "+ p.name);
+                    Console.Write("Are you sure your name is ");
+                    Console.ForegroundColor = ConsoleColor.Blue;
+                    Console.Write(p.name);
+                    Console.ResetColor();
+                    Console.Write(" and that you are a ");
+                    Console.ForegroundColor = ConsoleColor.Blue;
+                    Console.WriteLine(currentPlayer.currentClass);
+                    Console.ResetColor();
+                    Console.WriteLine();
                     Console.WriteLine("Please type 'Yes' or 'No'");
                     string inputname = Tools.ReadLine();
                     if (inputname.ToLower() == "no")
@@ -93,6 +118,10 @@ namespace Game
                         Console.Write("\u001b[1m||<Your name is \u001b[0m");
                         Console.ForegroundColor = ConsoleColor.Blue;
                         Console.WriteLine(p.name);
+                        Console.ForegroundColor = ConsoleColor.Green;
+                        Console.Write("\u001b[1m||<You are a \u001b[0m");
+                        Console.ForegroundColor = ConsoleColor.Blue;
+                        Console.WriteLine(currentPlayer.currentClass);
                         Console.ForegroundColor = ConsoleColor.Green;
                         Console.WriteLine("\u001b[1m<>===========================<>\u001b[0m");
                         Console.ResetColor();
@@ -189,9 +218,9 @@ namespace Game
                 
                 foreach (Player p in players)
                 {
-                    Console.WriteLine(p.id+": "+p.name);
+                    Console.WriteLine(p.id + ": " + p.name);
                 }
-                Print("Please input player name or id (id:# or playername). 'create' will start a new save!");
+                Print("Please input player name or id (id:# or playername). 'create' will start a new save!", 60);
                 string[] data = Tools.ReadLine().Split(':');
 
                 try

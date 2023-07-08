@@ -109,7 +109,7 @@ namespace Game
                     int damage = p - Program.currentPlayer.armorValue;
                     if(damage<0)
                         damage=0;
-                    int attack = rand.Next(0, Program.currentPlayer.weaponValue) + rand.Next(1,4);
+                    int attack = rand.Next(0, Program.currentPlayer.weaponValue) + rand.Next(1,4)+((Program.currentPlayer.currentClass==Player.PLayerClass.Warrior)?3:0);
                     Console.WriteLine("You lose "+damage+" health and deal "+attack+" damage");
                     Program.currentPlayer.health -= damage;
                     h -= attack;
@@ -129,7 +129,7 @@ namespace Game
                 else if (input.ToLower() == "r"||input.ToLower()=="run")
                 {
                     //Run
-                    if(rand.Next(0,2) == 0)
+                    if(Program.currentPlayer.currentClass!=Player.PLayerClass.Archer&&rand.Next(0,2) == 0)
                     {
                         //fail run
                         Console.WriteLine("You Decide to take a chance and run a way from "+n+", unfortunately the incoming strike hits you in the back and you fall on the ground.");
@@ -163,7 +163,7 @@ namespace Game
                     {
                         //succed heal
                         Console.WriteLine("You quickly reach into your bag and pull out a brightly glowing, purple flask. You take a long refreshing drink.");
-                        int potionV = 5;
+                        int potionV = 5+((Program.currentPlayer.currentClass==Player.PLayerClass.Mage)?+4:0);
                         Console.WriteLine("You gain "+potionV+" health");
                         Program.currentPlayer.health += potionV;
                         Console.WriteLine("As you were drinking the potion, the "+n+" snuck up on you and stuck.");
