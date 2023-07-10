@@ -27,19 +27,19 @@ namespace Game
         {
             int upper = (2*mods+5);
             int lower = (mods+2);
-            return Program.rand.Next(lower,upper);
+            return Program.rnd.Next(lower,upper);
         }
         public int GetPower()
         {
             int upper = (2*mods+2);
             int lower = (mods+1);
-            return Program.rand.Next(lower,upper);
+            return Program.rnd.Next(lower,upper);
         }
         public int GetCoins()
         {
             int upper = (15*mods+50);
             int lower = (10*mods+10);
-            return Program.rand.Next(lower,upper);
+            return Program.rnd.Next(lower,upper);
         }
     }
 }

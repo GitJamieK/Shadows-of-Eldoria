@@ -12,7 +12,7 @@ namespace Game
     {
         public static Player currentPlayer = new Player();
         public static bool mainLoop = true;
-        public static Random rand = new Random();
+        public static Random rnd = new Random();
         static void Main(string[] args)
         {
             if(!Directory.Exists("saves"))
@@ -95,10 +95,6 @@ namespace Game
                     Console.ForegroundColor = ConsoleColor.Blue;
                     Console.Write(p.name);
                     Console.ResetColor();
-                    Console.Write(" and that you are a ");
-                    Console.ForegroundColor = ConsoleColor.Blue;
-                    Console.WriteLine(currentPlayer.currentClass);
-                    Console.ResetColor();
                     Console.WriteLine();
                     Console.WriteLine("Please type 'Yes' or 'No'");
                     string inputname = Tools.ReadLine();
@@ -118,10 +114,6 @@ namespace Game
                         Console.Write("\u001b[1m||<Your name is \u001b[0m");
                         Console.ForegroundColor = ConsoleColor.Blue;
                         Console.WriteLine(p.name);
-                        Console.ForegroundColor = ConsoleColor.Green;
-                        Console.Write("\u001b[1m||<You are a \u001b[0m");
-                        Console.ForegroundColor = ConsoleColor.Blue;
-                        Console.WriteLine(currentPlayer.currentClass);
                         Console.ForegroundColor = ConsoleColor.Green;
                         Console.WriteLine("\u001b[1m<>===========================<>\u001b[0m");
                         Console.ResetColor();
