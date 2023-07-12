@@ -64,7 +64,7 @@ namespace Game
             Console.WriteLine("\u001b[1m<>====================================<>\u001b[0m");
             Console.ResetColor();
             
-            p.name = Tools.ReadLine();
+            p.Name = Tools.ReadLine();
             Print("Class: Mage  Archer  Warrior");
             bool flag = false;
             while(flag==false)
@@ -83,9 +83,9 @@ namespace Game
                     flag = false;
                 }
             }
-            p.id = i;
+            p.Id = i;
             Console.Clear();
-                if (p.name == "")
+                if (p.Name == "")
                 {
                     isNameValid = false;
                 }    
@@ -93,7 +93,7 @@ namespace Game
                 {
                     Console.Write("Are you sure your name is ");
                     Console.ForegroundColor = ConsoleColor.Blue;
-                    Console.Write(p.name);
+                    Console.Write(p.Name);
                     Console.ResetColor();
                     Console.WriteLine();
                     Console.WriteLine("Please type 'Yes' or 'No'");
@@ -113,7 +113,7 @@ namespace Game
                         Console.ForegroundColor = ConsoleColor.Green;
                         Console.Write("\u001b[1m||<Your name is \u001b[0m");
                         Console.ForegroundColor = ConsoleColor.Blue;
-                        Console.WriteLine(p.name);
+                        Console.WriteLine(p.Name);
                         Console.ForegroundColor = ConsoleColor.Green;
                         Console.WriteLine("\u001b[1m<>===========================<>\u001b[0m");
                         Console.ResetColor();
@@ -154,7 +154,7 @@ namespace Game
             Console.WriteLine("");
             Console.Write("Your name is ");
             Console.ForegroundColor = ConsoleColor.Blue;
-            Console.WriteLine(p.name+".");
+            Console.WriteLine(p.Name+".");
             Console.ForegroundColor = ConsoleColor.DarkMagenta;
             Console.WriteLine("You are one of the three knights who are the mightiest in all of Eldoria!");
             Console.WriteLine("The worker nearby in your room tells you quickly about about the tragedy happing in the land of Eldoria at this very moment.");
@@ -178,7 +178,7 @@ namespace Game
         //saves
         public static void Save()
         {
-            string path = "saves/" + currentPlayer.id.ToString() + ".player";
+            string path = "saves/" + currentPlayer.Id.ToString() + ".player";
             string jsonString = JsonSerializer.Serialize(currentPlayer);
             File.WriteAllText(path, jsonString);
         }
@@ -206,13 +206,13 @@ namespace Game
             while(true)
             {
                 Console.Clear();
-                Print("Choose your save:",60);
+                Print("Choose your save:",50);
                 
                 foreach (Player p in players)
                 {
-                    Console.WriteLine(p.id + ": " + p.name);
+                    Console.WriteLine(p.Id + ": " + p.Name);
                 }
-                Print("Please input player name or id (id:# or playername). 'create' will start a new save!", 60);
+                Print("Please input player name or id (id:# or playername). 'create' will start a new save!", 20);
                 string[] data = Tools.ReadLine().Split(':');
 
                 try
@@ -223,7 +223,7 @@ namespace Game
                         {
                             foreach (Player player in players)
                             {
-                                if(player.id==id)
+                                if(player.Id==id)
                                 {
                                     return player;
                                 }
@@ -251,7 +251,7 @@ namespace Game
                     {
                         foreach (Player player in players)
                         {
-                            if(player.name==data[0])
+                            if(player.Name==data[0])
                             {
                                 return player;
                             }

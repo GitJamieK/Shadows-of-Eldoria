@@ -9,8 +9,19 @@ namespace Game
     [Serializable]
     public class Player
     {
-        public string name="";
-        public int id;
+        private string? _name;
+        public string? Name
+        {
+            get
+            {
+                return _name;
+            }   
+            set
+            {
+                _name = value;
+            }
+        }
+        public int Id { get; set; }
         public int coins = 500000; //TEMP AMOUNT
         public int health = 10;
         public int damage = 1; 

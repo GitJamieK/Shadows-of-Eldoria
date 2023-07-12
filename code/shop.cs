@@ -49,7 +49,7 @@ namespace Game
                 Console.WriteLine("");
                 Console.WriteLine("");
                 Console.ForegroundColor = ConsoleColor.Blue;
-                Console.WriteLine(p.name+"'s Stats");
+                Console.WriteLine(p.Name+"'s Stats");
                 Console.ForegroundColor = ConsoleColor.Blue;
                 Console.WriteLine("\u001b[1m<>==================<>\u001b[0m");
                 Console.ForegroundColor = ConsoleColor.Blue;
