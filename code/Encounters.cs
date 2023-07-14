@@ -184,8 +184,15 @@ namespace Game
                 Console.ReadKey();
             }
             int c = Program.currentPlayer.GetCoins();
-            Console.WriteLine("\nAs you stand victorious over the dead "+n+" you find "+c+" gold coins!");
+            int x = Program.currentPlayer.GetXP();
+            Console.WriteLine("\nAs you stand victorious over the dead "+n+" you find "+c+" gold coins! You have gained "+x+"XP!");
             Program.currentPlayer.coins += c;
+            Program.currentPlayer.xp += x;
+
+            if (Program.currentPlayer.CanLevelUp())
+                Program.currentPlayer.LevelUp();
+
+            
             Console.ReadKey();
         }
 

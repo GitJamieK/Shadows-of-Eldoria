@@ -23,6 +23,8 @@ namespace Game
         }
         public int Id { get; set; }
         public int coins = 500000; //TEMP AMOUNT
+        public int level = 1;
+        public int xp = 0;
         public int health = 10;
         public int damage = 1; 
         public int armorValue = 0;
@@ -51,6 +53,38 @@ namespace Game
             int upper = (15*mods+50);
             int lower = (10*mods+10);
             return Program.rnd.Next(lower,upper);
+        }
+
+        public int GetXP()
+        {
+            int upper = (20*mods+50);
+            int lower = (15*mods+10);
+            return Program.rnd.Next(lower, upper);
+        }
+
+        public int GetLevelUpValue()
+        {
+            return 100*level+400;
+        }
+
+        public bool CanLevelUp()
+        {
+            if(xp>=GetLevelUpValue())
+                return true;
+            else
+                return false;
+        }
+
+        public void LevelUp()
+        {
+            while(CanLevelUp())
+            {
+                xp -= GetLevelUpValue();
+                level++;
+            }
+            Console.ForegroundColor = ConsoleColor.Green;
+            Program.Print("Congrats! You are now level "+level+"!!");
+            Console.ResetColor();
         }
     }
 }

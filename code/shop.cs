@@ -64,6 +64,16 @@ namespace Game
                 Console.WriteLine("\u001b[1m|Potions:           |\u001b[0m"+p.potion);
                 Console.ForegroundColor = ConsoleColor.Blue;
                 Console.WriteLine("\u001b[1m|Difficulty Mods:   |\u001b[0m"+p.mods);
+
+                Console.ForegroundColor = ConsoleColor.Blue;
+                Console.WriteLine("\u001b[1m|Xp:\u001b[0m");
+                Console.ForegroundColor = ConsoleColor.Blue;
+                Console.Write("[");
+                Program.ProgressBar("+","-",((decimal)p.xp/(decimal)p.GetLevelUpValue()),20);
+                Console.WriteLine("]");
+
+                Console.ForegroundColor = ConsoleColor.Blue;
+                Console.WriteLine("\u001b[1m|Level:             |\u001b[0m"+p.level);
                 Console.ForegroundColor = ConsoleColor.Blue;
                 Console.WriteLine("\u001b[1m<>==================<>\u001b[0m");
 
