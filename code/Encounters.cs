@@ -137,7 +137,7 @@ namespace Game
                         if(damage<0)
                             damage=0;
                         Console.WriteLine("You lose "+damage+" health and you did not manage to run away from"+n+".");
-                        Console.ReadKey();
+                        Program.currentPlayer.health-=damage;
                     }
                     else
                     {
@@ -166,13 +166,13 @@ namespace Game
                         int potionV = 5+((Program.currentPlayer.currentClass==Player.PLayerClass.Mage)?+4:0);
                         Console.WriteLine("You gain "+potionV+" health");
                         Program.currentPlayer.health += potionV;
+                        Program.currentPlayer.potion--;
                         Console.WriteLine("As you were drinking the potion, the "+n+" snuck up on you and stuck.");
                         int damage = (p/2)-Program.currentPlayer.armorValue;
                         if(damage<0)
                             damage=0;
                         Console.WriteLine("You lose "+damage+" health");
                     }
-                    Console.ReadKey();
                 }
                 if(Program.currentPlayer.health<=0)
                 {

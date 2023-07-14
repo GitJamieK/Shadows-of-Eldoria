@@ -82,6 +82,7 @@ namespace Game
                 xp -= GetLevelUpValue();
                 level++;
             }
+            Console.Clear();
             Console.ForegroundColor = ConsoleColor.Green;
             Program.Print("Congrats! You are now level "+level+"!!");
             Console.ResetColor();
