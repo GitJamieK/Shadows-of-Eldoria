@@ -38,17 +38,73 @@ namespace Game
             Console.ReadKey();
             Combat(false, "Queen",5,2); //TEMP STATS
         }
+        public static void PuzzleOneEncounter()
+        {
+            Console.Clear();
+            Console.WriteLine("You are walking down a hall. You see that the floor is covered in runes.");
+            List<char> chars = new char[]{'0','2','3','4','5','6','7','8','9'}.ToList();
+            List<int> positions = new List<int>();
+            char c = chars[Program.rnd.Next(0,10)];
+            chars.Remove(c);
+            for (int y = 0; y < 4; y++)
+            {
+                int pos = Program.rnd.Next(0,4);
+                positions.Add(pos);
+                for (int x = 0; x < 4; x++)
+                {
+                    if(x == pos)
+                        Console.Write(c);
+                    else
+                        Console.Write(chars[Program.rnd.Next(0,8)]);
+                }
+                Console.Write("\n");
+            }
+            Console.WriteLine("Choose youre path:     (Type the position of the rune you want to stand on, not the number; left to right.)");
+            for (int i = 0; i < 4; i++)
+            {
+                while(true)
+                {
+                    if(int.TryParse(Tools.ReadLine(), out int input) && input < 5 && input > 0)
+                    {
+                        if(positions[i] == input - 1)
+                            break;
+                        else
+                        {
+                            Console.WriteLine("Darts fly out of the walls! You take 2 damage.");
+                            Program.currentPlayer.health-=2;
+                            if(Program.currentPlayer.health<=0)
+                            {
+                                //death
+                                Console.ForegroundColor = ConsoleColor.Red;
+                                Console.WriteLine("You start to feel sick. The poison from the darts slowly kills you. You have died!");
+                                Console.ResetColor();
+                                Console.ReadKey();
+                                System.Environment.Exit(0);
+                            }
+                            break;
+                        }
+                    }
+                    else
+                        Console.WriteLine("Invalid Input: Whole numbers 1-4 only");
+                }
+            }
+            Console.WriteLine("You have successuflly crossed the hallway!");
+            Console.ReadKey();
+        }
         
         //Encounter tools
         public static void RandomEncounter()
         {
-            switch(rand.Next(0,2))
+            switch(rand.Next(0,3))
             {
                 case 0:
                     BasicFightEncounter();
                     break;
                 case 1:
                     QueenEncounter();
+                    break;
+                case 2:
+                    PuzzleOneEncounter();
                     break;
             }
         }
@@ -177,7 +233,9 @@ namespace Game
                 if(Program.currentPlayer.health<=0)
                 {
                     //death
+                    Console.ForegroundColor = ConsoleColor.Red;
                     Console.WriteLine("As the "+n+" stands tall above you as you faint and your vision turns black. You have been killed by the "+n);
+                    Console.ResetColor();
                     Console.ReadKey();
                     System.Environment.Exit(0);
                 }
@@ -185,7 +243,7 @@ namespace Game
             }
             int c = Program.currentPlayer.GetCoins();
             int x = Program.currentPlayer.GetXP();
-            Console.WriteLine("\nAs you stand victorious over the dead "+n+" you find "+c+" gold coins! You have gained "+x+"XP!");
+            Console.WriteLine("\nAs you stand victorious over the dead "+n+" you find "+c+" gold coins!\nYou have gained "+x+"XP!");
             Program.currentPlayer.coins += c;
             Program.currentPlayer.xp += x;
 
