@@ -8,20 +8,18 @@ namespace Game
 {
     public class Encounters
     {   
-        static Random rand =  new Random();
+        static Random rnd =  new Random();
         //Encounter Generic
 
 
         //Encounters
-        public static void FirstEncounter()
+        public static void QueenEncounter()
         {
             Console.Clear();
-            Console.WriteLine("You encounter a Shadow warrior!");
-            Console.WriteLine("IT ATTACKS!");
-            Console.WriteLine("Press any key to continue\n>");
+            Console.WriteLine("TMEP_TMEP"); //wait, Write story.
+            Console.WriteLine("TMEP_TMEP"); //wait, Write story.
             Console.ReadKey();
-            Console.Clear();
-            Combat(false, "Shadow Warrior",1,4);
+            Combat(false, "Queen",5,2); //TEMP STATS
         }
         public static void BasicFightEncounter()
         {
@@ -30,82 +28,96 @@ namespace Game
             Console.ReadKey();
             Combat(true,"",0,0); //values are placeholders
         }
-        public static void QueenEncounter() //TEMP
+        public static void WarriorEncounter() //TEMP
         {
             Console.Clear();
-            Console.WriteLine("TMEP_TMEP"); //wait, Write story.
-            Console.WriteLine("TMEP_TMEP"); //wait, Write story.
+            Console.WriteLine("You encounter a Shadow warrior!");
+            Console.WriteLine("IT ATTACKS!");
+            Console.WriteLine("Press any key to continue\n>");
             Console.ReadKey();
-            Combat(false, "Queen",5,2); //TEMP STATS
+            Console.Clear();
+            Combat(false, "Shadow Warrior",1,4);
+
         }
         public static void PuzzleOneEncounter()
         {
             Console.Clear();
             Console.WriteLine("You are walking down a hall. You see that the floor is covered in runes.");
-            List<char> chars = new char[]{'0','2','3','4','5','6','7','8','9'}.ToList();
-            List<int> positions = new List<int>();
-            char c = chars[Program.rnd.Next(0,10)];
-            chars.Remove(c);
-            for (int y = 0; y < 4; y++)
+            List<char> runes = new List<char> { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H' };
+            char targetRune = runes[Program.rnd.Next(0, 8)];
+            runes.Remove(targetRune);
+    
+            int targetRow = Program.rnd.Next(0, 4);
+    
+            for (int row = 0; row < 4; row++)
             {
-                int pos = Program.rnd.Next(0,4);
-                positions.Add(pos);
-                for (int x = 0; x < 4; x++)
+                
+                for (int col = 0; col < 4; col++)
                 {
-                    if(x == pos)
-                        Console.Write(c);
-                    else
-                        Console.Write(chars[Program.rnd.Next(0,8)]);
+                    char runeToShow = (row == targetRow) ? targetRune : runes[Program.rnd.Next(0, 7)];
+                    Console.Write($" [{runeToShow}] ");
                 }
-                Console.Write("\n");
+                Console.WriteLine();
             }
-            Console.WriteLine("Choose youre path:     (Type the position of the rune you want to stand on, not the number; left to right.)");
-            for (int i = 0; i < 4; i++)
+            Console.WriteLine("Choose your path: (Enter the row number where you want to stand, 1-4)");
+            if (int.TryParse(Tools.ReadLine(), out int selectedRow) && selectedRow >= 1 && selectedRow <= 4)
             {
-                while(true)
+                if (selectedRow == targetRow + 1)
                 {
-                    if(int.TryParse(Tools.ReadLine(), out int input) && input < 5 && input > 0)
+                    Console.WriteLine("You have successfully crossed the hallway!");
+                }
+                else
+                {
+                    Console.WriteLine("Darts fly out of the walls! You take 2 damage.");
+                    Program.currentPlayer.health -= 2;
+                    if (Program.currentPlayer.health <= 0)
                     {
-                        if(positions[i] == input - 1)
-                            break;
-                        else
-                        {
-                            Console.WriteLine("Darts fly out of the walls! You take 2 damage.");
-                            Program.currentPlayer.health-=2;
-                            if(Program.currentPlayer.health<=0)
-                            {
-                                //death
-                                Console.ForegroundColor = ConsoleColor.Red;
-                                Console.WriteLine("You start to feel sick. The poison from the darts slowly kills you. You have died!");
-                                Console.ResetColor();
-                                Console.ReadKey();
-                                System.Environment.Exit(0);
-                            }
-                            break;
-                        }
+                        // Death
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine("You start to feel sick. The poison from the darts slowly kills you. You have died!");
+                        Console.ResetColor();
+                        Console.ReadKey();
+                        System.Environment.Exit(0);
                     }
-                    else
-                        Console.WriteLine("Invalid Input: Whole numbers 1-4 only");
                 }
             }
-            Console.WriteLine("You have successuflly crossed the hallway!");
+            else
+            {
+                Console.WriteLine("Invalid Input: Enter a whole number between 1 and 4.");
+            }
+
+            Console.ReadKey();
+        }
+        public static void NewStaticEncounter()
+        {
+            Console.Clear();
+            Console.WriteLine("TEMP");
+            // add story
+            // add story
             Console.ReadKey();
         }
         
         //Encounter tools
         public static void RandomEncounter()
         {
-            switch(rand.Next(0,3))
+            switch(rnd.Next(0,3))
             {
                 case 0:
                     BasicFightEncounter();
                     break;
                 case 1:
-                    QueenEncounter();
+                    WarriorEncounter();
                     break;
                 case 2:
                     PuzzleOneEncounter();
                     break;
+            }
+            
+            Program.RandomEncounterCount++;
+            if (Program.RandomEncounterCount >= 20)
+            {
+                NewStaticEncounter();
+                Program.RandomEncounterCount = 0;
             }
         }
 
@@ -165,7 +177,7 @@ namespace Game
                     int damage = p - Program.currentPlayer.armorValue;
                     if(damage<0)
                         damage=0;
-                    int attack = rand.Next(0, Program.currentPlayer.weaponValue) + rand.Next(1,4)+((Program.currentPlayer.currentClass==Player.PLayerClass.Warrior)?3:0);
+                    int attack = rnd.Next(0, Program.currentPlayer.weaponValue) + rnd.Next(1,4)+((Program.currentPlayer.currentClass==Player.PLayerClass.Warrior)?3:0);
                     Console.WriteLine("You lose "+damage+" health and deal "+attack+" damage");
                     Program.currentPlayer.health -= damage;
                     h -= attack;
@@ -177,7 +189,7 @@ namespace Game
                     int damage = (p/4) - Program.currentPlayer.armorValue;
                     if(damage<0)
                         damage=0;                    
-                    int attack = rand.Next(0, Program.currentPlayer.weaponValue)/2;
+                    int attack = rnd.Next(0, Program.currentPlayer.weaponValue)/2;
                     Console.WriteLine("You lose "+damage+" health and deal "+attack+" damage");
                     Program.currentPlayer.health -= damage;
                     h -= attack;                    
@@ -185,7 +197,7 @@ namespace Game
                 else if (input.ToLower() == "r"||input.ToLower()=="run")
                 {
                     //Run
-                    if(Program.currentPlayer.currentClass!=Player.PLayerClass.Archer&&rand.Next(0,2) == 0)
+                    if(Program.currentPlayer.currentClass!=Player.PLayerClass.Archer&&rnd.Next(0,2) == 0)
                     {
                         //fail run
                         Console.WriteLine("You Decide to take a chance and run a way from "+n+", unfortunately the incoming strike hits you in the back and you fall on the ground.");
@@ -256,7 +268,7 @@ namespace Game
 
         public static string GetName()
         {
-            switch(rand.Next(0,4))
+            switch(rnd.Next(0,4))
             {
                 case 0:
                     return "Small Shadow Warrior";

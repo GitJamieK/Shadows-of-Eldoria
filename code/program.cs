@@ -10,6 +10,7 @@ namespace Game
 {
     public class Program
     {
+        public static int RandomEncounterCount = 0;
         public static Player currentPlayer = new Player();
         public static bool mainLoop = true;
         public static Random rnd = new Random();
@@ -21,7 +22,7 @@ namespace Game
             }
             currentPlayer = Load(out bool newP);
             if(newP)
-                Encounters.FirstEncounter();
+                Encounters.QueenEncounter();
             while(mainLoop)
             {
                 Encounters.RandomEncounter();
