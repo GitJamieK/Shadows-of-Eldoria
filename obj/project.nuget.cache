@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "h9uuGj8/ukgYzCeXCYTUtx6jdBJLBt0sDKibDytP1dSAb3gQ7QbuHIsR2alaH7h22tVVCSKcKtiwqEeGtlstRA==",
+  "dgSpecHash": "McbOqoV0wogF3p0iDiJRlMdA7GALhFQAk/I57K6tB1SojDfSAHf5dHeweipTJjEg2OYl5h3xfiekexqApiP3Rw==",
   "success": true,
   "projectFilePath": "D:\\Work\\Shadows of Eldoria\\Shadows of Eldoria.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\Jamie\\.nuget\\packages\\figgle\\0.5.1\\figgle.0.5.1.nupkg.sha512"
+  ],
   "logs": []
 }

@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 using System.Text.Json;
+using Figgle;
 
 namespace Game
 {
@@ -36,16 +37,10 @@ namespace Game
             Console.Clear();
             Player p = new Player();
             Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine("\u001b[1m<>================================<>\u001b[0m");
-            Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine("\u001b[1m||\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/||\u001b[0m");
-            Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine("\u001b[1m||<Welcome to Shadows of Eldoria!>||\u001b[0m");
-            Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine("\u001b[1m||/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\||\u001b[0m");
-            Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine("\u001b[1m<>================================<>\u001b[0m");
-            Console.ResetColor();
+            Console.Write("\x1b[1m");
+            Console.Write(FiggleFonts.Graffiti.Render("<Welcome to>"));
+            Console.WriteLine(FiggleFonts.Graffiti.Render("<Shadows of Eldoria!>"));
+            Console.Write("\x1b[0m");
             Console.Write("Press any key to continue.\n>");
             Console.ReadKey();
             Console.Clear();
@@ -54,15 +49,10 @@ namespace Game
             while (isNameValid == false)
             {
             Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine("\u001b[1m<>====================================<>\u001b[0m");
-            Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine("\u001b[1m||\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/||\u001b[0m");
-            Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine("\u001b[1m||<What will your characters name be?>||\u001b[0m");
-            Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine("\u001b[1m||/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\||\u001b[0m");
-            Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine("\u001b[1m<>====================================<>\u001b[0m");
+            Console.Write("\x1b[1m");
+            Console.Write(FiggleFonts.Graffiti.Render("<What will your "));
+            Console.WriteLine(FiggleFonts.Graffiti.Render("characters name be?>"));
+            Console.Write("\x1b[0m");
             Console.ResetColor();
             
             p.Name = Tools.ReadLine();
