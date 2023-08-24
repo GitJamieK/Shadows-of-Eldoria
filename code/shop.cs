@@ -41,7 +41,7 @@ namespace Game
                 Console.ForegroundColor = ConsoleColor.Blue;
                 Console.WriteLine("\u001b[1m<>==================<>\u001b[0m");
                 Console.ForegroundColor = ConsoleColor.Blue;
-                Console.WriteLine("\u001b[1m|(E)xit             |\u001b[0m");
+                Console.WriteLine("\u001b[1m|(E)xit shop        |\u001b[0m");
                 Console.ForegroundColor = ConsoleColor.Blue;
                 Console.WriteLine("\u001b[1m|(Q)uit Game        |\u001b[0m");
                 Console.ForegroundColor = ConsoleColor.Blue;
