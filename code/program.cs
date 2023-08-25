@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Threading;
 using System.IO;
 using System.Text.Json;
 using Figgle;
@@ -30,7 +31,7 @@ namespace Game
             }
         }
 
-
+        
         static Player NewStart(int i)
         {
             //choosing name
@@ -41,41 +42,42 @@ namespace Game
             Console.Write(FiggleFonts.Graffiti.Render("<Welcome to>"));
             Console.WriteLine(FiggleFonts.Graffiti.Render("<Shadows of Eldoria!>"));
             Console.Write("\x1b[0m");
-            Console.Write("Press any key to continue.\n>");
-            Console.ReadKey();
-            Console.Clear();
+            Console.ResetColor();
+            Console.Write("Press any key to continue\n>_");
+            Tools.Loading();
             
             bool isNameValid = false;
             while (isNameValid == false)
             {
-            Console.ForegroundColor = ConsoleColor.Green;
-            Console.Write("\x1b[1m");
-            Console.Write(FiggleFonts.Graffiti.Render("<What will your "));
-            Console.WriteLine(FiggleFonts.Graffiti.Render("characters name be?>"));
-            Console.Write("\x1b[0m");
-            Console.ResetColor();
-            
-            p.Name = Tools.ReadLine();
-            Print("Class: Mage  Archer  Warrior");
-            bool flag = false;
-            while(flag==false)
-            {
-                flag=true;
-                string input = Tools.ReadLine().ToLower();
-                if(input=="mage")
-                    p.currentClass = Player.PLayerClass.Mage;
-                else if(input=="archer")
-                    p.currentClass = Player.PLayerClass.Archer;
-                else if(input=="warrior")
-                    p.currentClass = Player.PLayerClass.Warrior;
-                else
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.Write("\x1b[1m");
+                Console.Write(FiggleFonts.Graffiti.Render("<What will your "));
+                Console.WriteLine(FiggleFonts.Graffiti.Render("characters name be?>"));
+                Console.Write("\x1b[0m");
+                Console.ResetColor();
+                Tools.Loading();
+
+                p.Name = Tools.ReadLine();
+                Print("Class: Mage  Archer  Warrior");
+                bool flag = false;
+                while(flag==false)
                 {
-                    Console.WriteLine("Please choose an existing class!");
-                    flag = false;
+                    flag=true;
+                    string input = Tools.ReadLine().ToLower();
+                    if(input=="mage")
+                        p.currentClass = Player.PLayerClass.Mage;
+                    else if(input=="archer")
+                        p.currentClass = Player.PLayerClass.Archer;
+                    else if(input=="warrior")
+                        p.currentClass = Player.PLayerClass.Warrior;
+                    else
+                    {
+                        Console.WriteLine("Please choose an existing class!");
+                        flag = false;
+                    }
                 }
-            }
-            p.Id = i;
-            Console.Clear();
+                p.Id = i;
+                Console.Clear();
                 if (p.Name == "")
                 {
                     isNameValid = false;
@@ -88,6 +90,7 @@ namespace Game
                     Console.ResetColor();
                     Console.WriteLine();
                     Console.WriteLine("Please type 'Yes' or 'No'");
+                    Tools.Loading();
                     string inputname = Tools.ReadLine();
                     if (inputname.ToLower() == "no")
                     {
@@ -157,7 +160,7 @@ namespace Game
             Console.ReadKey();
 
 
-            return p;
+            return p;  
         }
         
         public static void Quit()
