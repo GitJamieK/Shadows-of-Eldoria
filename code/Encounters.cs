@@ -45,7 +45,7 @@ namespace Game
             Console.WriteLine("'Brave soul, your quest is dire. You must, with all haste, seek out the other two knights. Together, you three shall embark on a perilous journey to vanquish the malevolent shadow sorcerer known as 'Malakar.'..");
             Console.WriteLine("..The fate of our realm rests upon your shoulders, and the kingdom's salvation lies within your valorous hearts.'");
             Console.WriteLine("");
-            Console.WriteLine("'The malevolent sorcerer Malakr is manipulating events from the shadows. ");
+            Console.WriteLine("'The malevolent sorcerer Malakar is manipulating events from the shadows. ");
             Console.WriteLine("He craved the ancient artifacts known as the Crystal Orbs, which were said to hold immense power capable of reshaping the very fabric of reality. ");
             Console.WriteLine("These orbs were scattered across Eldoria, protected by powerful enchantments and guarded by mythical creatures.'");
             Console.WriteLine("");
@@ -64,7 +64,7 @@ namespace Game
         {
             Console.ForegroundColor = ConsoleColor.DarkMagenta;
             Console.Clear();
-            Console.WriteLine("'Fret, valiant warrior, for I am yet among the living, not succumbed to the grasp of death's cold hand. ");
+            Console.WriteLine("'Fret not, valiant warrior, for I am yet among the living, not succumbed to the grasp of death's cold hand. ");
             Console.WriteLine("You've proven your strength and are able to fight alongside the other mighty warriors to defeat Malakar and the Shadow Lord once and for all.");
             Console.WriteLine("Please accept this gift as gratidute for you offering yourself and trying to save this kingdom..'");
             Program.currentPlayer.coins += 200;
@@ -95,7 +95,7 @@ namespace Game
             Console.Clear();
             Console.WriteLine("You encounter a Shadow warrior!");
             Console.WriteLine("IT ATTACKS!");
-            Console.WriteLine("Press any key to continue\n>_");
+            Console.Write("Press any key to continue\n>_");
             Tools.Loading();
             Console.Clear();
             Combat(false, "Shadow Warrior",1,4);
