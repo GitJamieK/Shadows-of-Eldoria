@@ -24,8 +24,8 @@ namespace Game
             Console.WriteLine("The air is heavy with a sense of urgency, as if the very walls themselves could whisper the dire straits of the realm. ");
             Console.WriteLine("");
             Console.ResetColor();
-            Console.Write("Press any key to continue.\n>");
-            Console.ReadKey();
+            Console.Write("Press any key to continue.\n>_");
+            Tools.Loading();
             Console.ForegroundColor = ConsoleColor.DarkMagenta;
             Console.WriteLine("");
             Console.WriteLine("At the heart of the hall, upon a magnificent throne carved from oak and adorned with intricate designs, sits the queen. ");
@@ -33,8 +33,8 @@ namespace Game
             Console.WriteLine("Her regal attire, once a symbol of power, now seems to hang upon her form as if weighed down by the troubles that surround her. ");
             Console.WriteLine("");
             Console.ResetColor();
-            Console.Write("Press any key to continue.\n>");
-            Console.ReadKey();
+            Console.Write("Press any key to continue.\n>_");
+            Tools.Loading();
             Console.ForegroundColor = ConsoleColor.DarkMagenta;
             Console.WriteLine("");
             Console.WriteLine("You found yourself standing before The Queen, her regal presence casting a solemn aura about the room. ");
@@ -55,8 +55,8 @@ namespace Game
             Console.WriteLine("'Before you go young knight, please prove your strength in a fight againts me..'");
             Console.WriteLine("");
             Console.ResetColor();
-            Console.Write("Press any key to continue.\n>");
-            Console.ReadKey();
+            Console.Write("Press any key to continue.\n>_");
+            Tools.Loading();
             Combat(false, "Queen",5,15);
             QueenAfterCombatText();
         }
@@ -79,8 +79,8 @@ namespace Game
             Console.WriteLine("Take your leave, valiant champion, and be the savior of this cherished realm we all hold dear!'");
             Console.WriteLine("");
             Console.ResetColor();
-            Console.Write("Press any key to continue.\n>");
-            Console.ReadKey();
+            Console.Write("Press any key to continue.\n>_");
+            Tools.Loading();
         }
 
         public static void BasicFightEncounter()
@@ -95,8 +95,8 @@ namespace Game
             Console.Clear();
             Console.WriteLine("You encounter a Shadow warrior!");
             Console.WriteLine("IT ATTACKS!");
-            Console.WriteLine("Press any key to continue\n>");
-            Console.ReadKey();
+            Console.WriteLine("Press any key to continue\n>_");
+            Tools.Loading();
             Console.Clear();
             Combat(false, "Shadow Warrior",1,4);
 

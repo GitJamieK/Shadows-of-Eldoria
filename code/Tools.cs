@@ -26,6 +26,7 @@ namespace Game
             });
             animThread.Start();
             animThread.Join();
+            Console.ReadKey(true);
         }
             public static string ReadLine()
         {

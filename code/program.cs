@@ -49,13 +49,13 @@ namespace Game
             bool isNameValid = false;
             while (isNameValid == false)
             {
+                Console.Clear();
                 Console.ForegroundColor = ConsoleColor.Green;
                 Console.Write("\x1b[1m");
                 Console.Write(FiggleFonts.Graffiti.Render("<What will your "));
                 Console.WriteLine(FiggleFonts.Graffiti.Render("characters name be?>"));
                 Console.Write("\x1b[0m");
                 Console.ResetColor();
-                Tools.Loading();
 
                 p.Name = Tools.ReadLine();
                 Print("Class: Mage  Archer  Warrior");
@@ -90,7 +90,6 @@ namespace Game
                     Console.ResetColor();
                     Console.WriteLine();
                     Console.WriteLine("Please type 'Yes' or 'No'");
-                    Tools.Loading();
                     string inputname = Tools.ReadLine();
                     if (inputname.ToLower() == "no")
                     {
@@ -129,8 +128,8 @@ namespace Game
             Console.WriteLine("darkness and restore balance to the realm. ");
             Console.WriteLine("");
             Console.ResetColor();
-            Console.Write("Press any key to continue.\n>");
-            Console.ReadKey();
+            Console.Write("Press any key to continue.\n>_");
+            Tools.Loading();
 
             Console.ForegroundColor = ConsoleColor.DarkMagenta;
             Console.WriteLine("");
@@ -141,8 +140,8 @@ namespace Game
             Console.WriteLine("to ascend to the throne. ");
             Console.WriteLine("");
             Console.ResetColor();
-            Console.Write("Press any key to continue.\n>");
-            Console.ReadKey();
+            Console.Write("Press any key to continue.\n>_");
+            Tools.Loading();
 
             Console.ForegroundColor = ConsoleColor.DarkMagenta;
             Console.WriteLine("");
@@ -156,8 +155,8 @@ namespace Game
             Console.WriteLine("'The king!, The king was murdered by a shadow!!, Help the castle is under attack!");
             Console.WriteLine("");
             Console.ResetColor();
-            Console.Write("Press any key to continue.\n>");
-            Console.ReadKey();
+            Console.Write("Press any key to continue.\n>_");
+            Tools.Loading();
 
 
             return p;  
