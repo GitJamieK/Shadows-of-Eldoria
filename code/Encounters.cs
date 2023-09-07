@@ -13,7 +13,7 @@ namespace Game
 
 
         //Encounters
-        public static void QueenEncounter()
+        public static void QueenEncounter() //encounter: queen
         {
             Console.Clear();
             Console.WriteLine("\u001b[1mThe Queen\u001b[0m");
@@ -101,10 +101,10 @@ namespace Game
             Combat(false, "Shadow Warrior",1,4);
 
         }
-        public static void PuzzleOneEncounter()
+        public static void PuzzleOneEncounter() //encounter: rune puzzle
         {
             Console.Clear();
-            Console.WriteLine("You are walking down a hall. You see that the floor is covered in runes.");
+            Console.WriteLine("You are walking down a hall. You see that the floor is covered in runes."); // REMINDER : FIX PUZZLE BUG!!!!!!!!!!!!
             List<char> runes = new List<char> { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H' };
             char targetRune = runes[Program.rnd.Next(0, 8)];
             runes.Remove(targetRune);
@@ -150,13 +150,44 @@ namespace Game
 
             Console.ReadKey();
         }
-        public static void NewStaticEncounter()
+        public static void NewStaticEncounter() //encounter: second knight
         {
             Console.Clear();
+            Console.ForegroundColor = ConsoleColor.DarkMagenta;
+            Console.WriteLine("In the waning light of day, as the sun cast long shadows across the ancient realm, ");
+            Console.WriteLine("your eyes were drawn to a figure, distant yet intriguing. With measured steps, you ");
+            Console.WriteLine("ventured forth, each footfall echoing through the hallowed forest. ");
+            Console.WriteLine("");
+            Console.ResetColor();
+            Console.Write("Press any key to continue.\n>_");
+            Tools.Loading();
+            Console.ForegroundColor = ConsoleColor.DarkMagenta;
+            Console.WriteLine("");
+            Console.WriteLine("As you drew near, the stranger turned to face you. Their countenance was shrouded ");
+            Console.WriteLine("in mystery, but there was no mistaking the aura of strength that enveloped them. ");
+            Console.WriteLine("It was one of the twoi mighty knights. ");
+            Console.WriteLine("");
+            Console.ResetColor();
+            Console.Write("Press any key to continue.\n>_");
+            Tools.Loading();
+            Console.ForegroundColor = ConsoleColor.DarkMagenta;
+            Console.WriteLine("");
+            Console.WriteLine("With bated breath, you recounted the quest entrusted to you by the benevolent queen. ");
+            Console.WriteLine("The warrior's eyes gleamed with understanding as the weight of your mission settled upon them. ");
+            Console.WriteLine("Wordlessly, you both embarked on a solemn journey, for destiny had woven your fates together in the quest for the elusive third and final warrior, ");
+            Console.WriteLine("the key to unlocking the ancient crystal orbs.");
+            Console.WriteLine("");
+            Console.ResetColor();
+            Console.Write("Press any key to continue.\n>_");
+            Tools.Loading();
+        }
+        public static void NewStaticEncounter2() //encounter: third knight
+        {
+            Console.Clear();
+            Console.ForegroundColor = ConsoleColor.DarkMagenta;
             Console.WriteLine("TEMP");
-            // add story
-            // add story
-            Console.ReadKey();
+            //ADD STORY (3RD KNIGHT)
+            //ADD STORY (3RD KNIGHT)
         }
         
         //Encounter tools
@@ -179,7 +210,12 @@ namespace Game
             if (Program.RandomEncounterCount >= 20)
             {
                 NewStaticEncounter();
-                Program.RandomEncounterCount = 0;
+                Program.RandomEncounterCount = 20;//REMINDER : FIX!!!!!!!!!!
+            }
+            Program.RandomEncounterCount++;
+            if (Program.RandomEncounterCount >= 35)
+            {
+                NewStaticEncounter2();
             }
         }
 
@@ -231,6 +267,8 @@ namespace Game
                 Console.ForegroundColor = ConsoleColor.Blue;
                 Console.WriteLine("\u001b[1m<>==================<>\u001b[0m");
                 Console.WriteLine("Potions: "+Program.currentPlayer.potion+" Health: "+Program.currentPlayer.health);
+                int pAttack = Program.currentPlayer.weaponValue + rnd.Next(1,4)+((Program.currentPlayer.currentClass==Player.PLayerClass.Warrior)?3:0);
+                Console.WriteLine("Damage: "+pAttack);
                 string input = Tools.ReadLine();
                 if (input.ToLower() == "a"||input.ToLower()=="attack")
                 {
@@ -285,6 +323,7 @@ namespace Game
                         //fail heal
                         Console.WriteLine("As you desperatly in need of a potion grasp for a potion in your bag, all that you can feel are empty flasks already used.");
                         int damage = p - Program.currentPlayer.armorValue;
+                        Program.currentPlayer.health -= p;
                         if(damage<0)
                             damage=0;
                         Console.WriteLine("The "+n+" manages to strike you with a mighty blow while you were trying to heal yourself and you lose "+damage+" health");
@@ -297,11 +336,15 @@ namespace Game
                         Console.WriteLine("You gain "+potionV+" health");
                         Program.currentPlayer.health += potionV;
                         Program.currentPlayer.potion--;
-                        Console.WriteLine("As you were drinking the potion, the "+n+" snuck up on you and stuck.");
-                        int damage = (p/2)-Program.currentPlayer.armorValue;
-                        if(damage<0)
-                            damage=0;
-                        Console.WriteLine("You lose "+damage+" health");
+                        if (rnd.Next(0,2) == 0)
+                        {
+                            int damage = (p/2)-Program.currentPlayer.armorValue;
+                            if(damage<0)
+                                damage=0;
+                            Console.WriteLine("As you were drinking the potion, the "+n+" snuck up on you and stuck.");
+                            Console.WriteLine("You lose "+damage+" health");
+                            Program.currentPlayer.health -= damage;
+                        }
                     }
                 }
                 if(Program.currentPlayer.health<=0)
