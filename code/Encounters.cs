@@ -104,16 +104,16 @@ namespace Game
         public static void PuzzleOneEncounter() //encounter: rune puzzle
         {
             Console.Clear();
-            Console.WriteLine("You are walking down a hall. You see that the floor is covered in runes."); // REMINDER : FIX PUZZLE BUG!!!!!!!!!!!!
+            Console.WriteLine("You are walking down a hall. You see that the floor is covered in runes.");
             List<char> runes = new List<char> { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H' };
             char targetRune = runes[Program.rnd.Next(0, 8)];
             runes.Remove(targetRune);
-    
+
             int targetRow = Program.rnd.Next(0, 4);
-    
+
             for (int row = 0; row < 4; row++)
             {
-                
+            
                 for (int col = 0; col < 4; col++)
                 {
                     char runeToShow = (row == targetRow) ? targetRune : runes[Program.rnd.Next(0, 7)];
@@ -121,36 +121,45 @@ namespace Game
                 }
                 Console.WriteLine();
             }
-            Console.WriteLine("Choose your path: (Enter the row number where you want to stand, 1-4)");
-            if (int.TryParse(Tools.ReadLine(), out int selectedRow) && selectedRow >= 1 && selectedRow <= 4)
+
+            int selectedRow = 0;
+            bool validInput = false;
+
+            while (!validInput)
             {
-                if (selectedRow == targetRow + 1)
+                Console.Write("Choose your path: (Enter the row number where you want to stand, 1-4): ");
+                if (int.TryParse(Tools.ReadLine(), out selectedRow) && selectedRow >= 1 && selectedRow <= 4)
                 {
-                    Console.WriteLine("You have successfully crossed the hallway!");
+                    validInput = true;
                 }
                 else
                 {
-                    Console.WriteLine("Darts fly out of the walls! You take 2 damage.");
-                    Program.currentPlayer.health -= 2;
-                    if (Program.currentPlayer.health <= 0)
-                    {
-                        // Death
-                        Console.ForegroundColor = ConsoleColor.Red;
-                        Console.WriteLine("You start to feel sick. The poison from the darts slowly kills you. You have died!");
-                        Console.ResetColor();
-                        Console.ReadKey();
-                        System.Environment.Exit(0);
-                    }
+                    Console.WriteLine("Invalid Input: Enter a whole number between 1 and 4.");
                 }
+            }
+
+            if (selectedRow == targetRow + 1)
+            {
+                Console.WriteLine("You have successfully crossed the hallway!");
             }
             else
             {
-                Console.WriteLine("Invalid Input: Enter a whole number between 1 and 4.");
+                Console.WriteLine("Darts fly out of the walls! You take 2 damage.");
+                Program.currentPlayer.health -= 2;
+                if (Program.currentPlayer.health <= 0)
+                {
+                    // Death
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("You start to feel sick. The poison from the darts slowly kills you. You have died!");
+                    Console.ResetColor();
+                    Console.ReadKey();
+                    System.Environment.Exit(0);
+                }
             }
 
             Console.ReadKey();
         }
-        public static void NewStaticEncounter() //encounter: second knight
+        public static void SpecialEncounter() //encounter: second knight
         {
             Console.Clear();
             Console.ForegroundColor = ConsoleColor.DarkMagenta;
@@ -181,13 +190,29 @@ namespace Game
             Console.Write("Press any key to continue.\n>_");
             Tools.Loading();
         }
-        public static void NewStaticEncounter2() //encounter: third knight
+        public static void SpecialEncounter2() //encounter: third knight
         {
             Console.Clear();
             Console.ForegroundColor = ConsoleColor.DarkMagenta;
             Console.WriteLine("TEMP");
             //ADD STORY (3RD KNIGHT)
             //ADD STORY (3RD KNIGHT)
+        }
+        public static void SpecialEncounter3() //encounter: ORBS
+        {
+            Console.Clear();
+            Console.ForegroundColor = ConsoleColor.DarkMagenta;
+            Console.WriteLine("TEMP ORBS");
+            //ADD STORY (ORBS)
+            //ADD STORY (ORBS)
+        }
+        public static void SpecialEncounter4() //encounter: BOSS
+        {
+            Console.Clear();
+            Console.ForegroundColor = ConsoleColor.DarkMagenta;
+            Console.WriteLine("TEMP BOSS");
+            //ADD STORY (BOSS)
+            //ADD STORY (BOSS)
         }
         
         //Encounter tools
@@ -206,16 +231,31 @@ namespace Game
                     break;
             }
             
+            bool specialEncounterOccurred = false;
+            bool specialEncounter2Occurred = false;
             Program.RandomEncounterCount++;
-            if (Program.RandomEncounterCount >= 20)
+            if (!specialEncounterOccurred)
             {
-                NewStaticEncounter();
-                Program.RandomEncounterCount = 20;//REMINDER : FIX!!!!!!!!!!
+                if (Program.RandomEncounterCount >= 5)
+                {
+                    SpecialEncounter();
+                    specialEncounterOccurred = true;
+                }
             }
-            Program.RandomEncounterCount++;
-            if (Program.RandomEncounterCount >= 35)
+            if (specialEncounterOccurred && !specialEncounter2Occurred)
             {
-                NewStaticEncounter2();
+                if (Program.RandomEncounterCount >= 10)
+                {
+                    SpecialEncounter2();
+                    specialEncounter2Occurred = true;
+                }
+            }
+            if (specialEncounter2Occurred)
+            {
+                if (Program.RandomEncounterCount >= 15)
+                {
+                    //SpecialEncounter3();
+                }
             }
         }
 
@@ -268,7 +308,6 @@ namespace Game
                 Console.WriteLine("\u001b[1m<>==================<>\u001b[0m");
                 Console.WriteLine("Potions: "+Program.currentPlayer.potion+" Health: "+Program.currentPlayer.health);
                 int pAttack = Program.currentPlayer.weaponValue + rnd.Next(1,4)+((Program.currentPlayer.currentClass==Player.PLayerClass.Warrior)?3:0);
-                Console.WriteLine("Damage: "+pAttack);
                 string input = Tools.ReadLine();
                 if (input.ToLower() == "a"||input.ToLower()=="attack")
                 {

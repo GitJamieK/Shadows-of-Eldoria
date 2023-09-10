@@ -28,7 +28,7 @@ namespace Game
         public int health = 10;
         public int damage = 1; 
         public int armorValue = 0;
-        public int potion = 5;
+        public int potion = 7;
         public int weaponValue = 1;
 
         public int mods = 0;
