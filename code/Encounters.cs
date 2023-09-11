@@ -195,6 +195,10 @@ namespace Game
             Console.Clear();
             Console.ForegroundColor = ConsoleColor.DarkMagenta;
             Console.WriteLine("TEMP");
+            Console.WriteLine("");
+            Console.ResetColor();
+            Console.Write("Press any key to continue.\n>_");
+            Tools.Loading();
             //ADD STORY (3RD KNIGHT)
             //ADD STORY (3RD KNIGHT)
         }
@@ -203,6 +207,10 @@ namespace Game
             Console.Clear();
             Console.ForegroundColor = ConsoleColor.DarkMagenta;
             Console.WriteLine("TEMP ORBS");
+            Console.WriteLine("");
+            Console.ResetColor();
+            Console.Write("Press any key to continue.\n>_");
+            Tools.Loading();
             //ADD STORY (ORBS)
             //ADD STORY (ORBS)
         }
@@ -211,6 +219,10 @@ namespace Game
             Console.Clear();
             Console.ForegroundColor = ConsoleColor.DarkMagenta;
             Console.WriteLine("TEMP BOSS");
+            Console.WriteLine("");
+            Console.ResetColor();
+            Console.Write("Press any key to continue.\n>_");
+            Tools.Loading();
             //ADD STORY (BOSS)
             //ADD STORY (BOSS)
         }
@@ -231,31 +243,48 @@ namespace Game
                     break;
             }
             
-            bool specialEncounterOccurred = false;
-            bool specialEncounter2Occurred = false;
             Program.RandomEncounterCount++;
-            if (!specialEncounterOccurred)
+            if (!Program.specialEncounterOccurred)
             {
                 if (Program.RandomEncounterCount >= 5)
                 {
                     SpecialEncounter();
-                    specialEncounterOccurred = true;
+                    Program.specialEncounterOccurred = true;
+                    Program.SpecialEncounterCount++;
                 }
             }
-            if (specialEncounterOccurred && !specialEncounter2Occurred)
+            else
             {
                 if (Program.RandomEncounterCount >= 10)
                 {
-                    SpecialEncounter2();
-                    specialEncounter2Occurred = true;
-                }
-            }
-            if (specialEncounter2Occurred)
-            {
-                if (Program.RandomEncounterCount >= 15)
-                {
-                    //SpecialEncounter3();
-                }
+                    if (!Program.specialEncounter2Occurred)
+                    {
+                        SpecialEncounter2();
+                        Program.specialEncounter2Occurred = true;
+                        Program.SpecialEncounterCount++;
+                    }
+                    else
+                    {
+                        if (Program.RandomEncounterCount >= 15)
+                        {
+                            if (!Program.specialEncounter3Occurred)
+                            {
+                                SpecialEncounter3();
+                                Program.specialEncounter3Occurred = true;
+                                Program.SpecialEncounterCount++;
+                            }
+                            else
+                            {
+                                if (Program.specialEncounter4Occurred)
+                                {
+                                    SpecialEncounter4();
+                                    Program.specialEncounter4Occurred = true;
+                                    Program.SpecialEncounterCount++;
+                                }
+                            }
+                        }
+                    }
+                }   
             }
         }
 

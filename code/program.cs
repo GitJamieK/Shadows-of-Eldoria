@@ -12,7 +12,12 @@ namespace Game
 {
     public class Program
     {
+        public static bool specialEncounterOccurred = false;
+        public static bool specialEncounter2Occurred = false;
+        public static bool specialEncounter3Occurred = false;
+        public static bool specialEncounter4Occurred = false;
         public static int RandomEncounterCount = 0;
+        public static int SpecialEncounterCount = 0;
         public static Player currentPlayer = new Player();
         public static bool mainLoop = true;
         public static Random rnd = new Random();
