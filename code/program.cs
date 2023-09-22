@@ -157,7 +157,7 @@ namespace Game
             Console.WriteLine("You are one of the three knights who are the mightiest in all of Eldoria!");
             Console.WriteLine("The worker nearby in your room tells you quickly about about the tragedy happing in the land of Eldoria at this very moment.");
             Console.WriteLine("You rush and grab your sharpest sword, as you run towards the throne hall you hear screaming and yelling ");
-            Console.WriteLine("'The king!, The king was murdered by a shadow!!, Help the castle is under attack!");
+            Console.WriteLine("'The king!', The king was murdered by a shadow!!, Help the castle is under attack!");
             Console.WriteLine("");
             Console.ResetColor();
             Console.Write("Press any key to continue.\n>_");

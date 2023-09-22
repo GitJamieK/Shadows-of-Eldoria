@@ -42,17 +42,17 @@ namespace Game
             Console.WriteLine("'My Lady, what tasks must I undertake to safeguard our realm?'");
             Console.WriteLine("");
             Console.WriteLine("Her Majesty, her eyes like gleaming sapphires, did not hesitate. She, the protector of the kingdom and the bearer of its destiny, swiftly replied, ");
-            Console.WriteLine("'Brave soul, your quest is dire. You must, with all haste, seek out the other two knights. Together, you three shall embark on a perilous journey to vanquish the malevolent shadow sorcerer known as 'Malakar.'..");
+            Console.WriteLine("'Brave soul, your quest is dire. You must, with all haste, seek out the other two knights. Together, you three shall embark on a perilous journey to vanquish the malevolent shadow sorcerer known as 'Malakar'..");
             Console.WriteLine("..The fate of our realm rests upon your shoulders, and the kingdom's salvation lies within your valorous hearts.'");
             Console.WriteLine("");
             Console.WriteLine("'The malevolent sorcerer Malakar is manipulating events from the shadows. ");
             Console.WriteLine("He craved the ancient artifacts known as the Crystal Orbs, which were said to hold immense power capable of reshaping the very fabric of reality. ");
             Console.WriteLine("These orbs were scattered across Eldoria, protected by powerful enchantments and guarded by mythical creatures.'");
             Console.WriteLine("");
-            Console.WriteLine("'So Please mighty warrior search the other knights and find the crystal orbs and defeat Malakar before they summon the ancient evil, known as the Shadow Lord. ");
+            Console.WriteLine("'So please mighty warrior search the other knights and find the crystal orbs and defeat Malakar before they summon the ancient evil, known as the Shadow Lord. ");
             Console.WriteLine("The awakening of the Shadow Lord would unleash an eternal darkness upon Eldoria.'");
             Console.WriteLine("");
-            Console.WriteLine("'Before you go young knight, please prove your strength in a fight againts me..'");
+            Console.WriteLine("'Before you go young knight, please prove your strength in a fight against me..'");
             Console.WriteLine("");
             Console.ResetColor();
             Console.Write("Press any key to continue.\n>_");
@@ -281,13 +281,48 @@ namespace Game
         {
             Console.Clear();
             Console.ForegroundColor = ConsoleColor.DarkMagenta;
-            Console.WriteLine("TEMP BOSS");
+            Console.WriteLine("In the time of relentless battles and the quaffing of elixirs, you and your fellow knights finally found a moment to catch your breath. ");
+            Console.WriteLine("It was then that an ominous omen unfurled before your eyes. From the heavens above, a colossal, ebony beam descended, crashing to earth with a thunderous cacophony. ");
+            Console.WriteLine("One of your knightly companions leaped to his feet, his countenance grave. 'By the ancient scrolls, that can be naught but the malevolent Malakar's gambit to invoke the Shadow Lord. ");
+            Console.WriteLine("We must thwart him!' He spoke with an urgency that suggested the perilous closeness of the shadowy summoning.");
             Console.WriteLine("");
             Console.ResetColor();
             Console.Write("Press any key to continue.\n>_");
             Tools.Loading();
-            //ADD STORY (BOSS)
-            //ADD STORY (BOSS)
+            Console.ForegroundColor = ConsoleColor.DarkMagenta;
+            Console.WriteLine("");
+            Console.WriteLine("Without a moment's hesitation, you surged toward the freshly fallen shaft of darkness. As you drew near, ");
+            Console.WriteLine("an eerie aura coursed through your very veins, yet your resolve remained steadfast. You pressed onward, drawn inexorably toward the epicenter of the sinister beam. ");
+            Console.WriteLine("The orbs in your possession began to radiate with an ever-intensifying luminosity. Your fellow knight declared, 'This must be the work of Malakar. We must vanquish him once and for all.'");
+            Console.WriteLine("");
+            Console.ResetColor();
+            Console.Write("Press any key to continue.\n>_");
+            Tools.Loading();
+            Console.ForegroundColor = ConsoleColor.DarkMagenta;
+            Console.WriteLine("");
+            Console.WriteLine("Upon your arrival, you beheld a disconcerting sight — a multitude of the same ominous obsidian haze enveloping a colossal dragon. ");
+            Console.WriteLine("Astonishment seized all three of you, but your companion explained, 'Malakar has subjugated a dragon to augment his power.' ");
+            Console.WriteLine("The orbs in your grasp blazed brilliantly, poised to unleash a cataclysmic surge of energy.");
+            Console.WriteLine("");
+            Console.ResetColor();
+            Console.Write("Press any key to continue.\n>_");
+            Tools.Loading();
+            Console.ForegroundColor = ConsoleColor.DarkMagenta;
+            Console.WriteLine("");
+            Console.WriteLine("With unwavering determination, you and your comrades clutched the orbs, ");
+            Console.WriteLine("directing them toward the draconic embodiment of Malakar, ");
+            Console.WriteLine("resolute in your mission to vanquish the dark sorcerer and safeguard the kingdom.");
+            Console.WriteLine("");
+            Console.ResetColor();
+            Console.Write("Press any key to continue.\n>_");
+            Tools.Loading();
+            Console.ForegroundColor = ConsoleColor.DarkMagenta;
+            Console.WriteLine("");
+            Console.WriteLine("In the face of Dragon Malakar, the shadow summoner, battle was joined!");
+            Console.ResetColor();
+            Console.Write("Press any key to continue.\n>_");
+            Tools.Loading();
+            Combat(false, "Dragon Malakar",15,100);
         }
         
         //Encounter tools
