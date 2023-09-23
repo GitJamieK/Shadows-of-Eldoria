@@ -1,4 +1,5 @@
 using System;
+using System.IO;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -28,7 +29,7 @@ namespace Game
             animThread.Join();
             Console.ReadKey(true);
         }
-            public static string ReadLine()
+        public static string ReadLine()
         {
             string? readLine = Console.ReadLine();
             if (readLine == null)

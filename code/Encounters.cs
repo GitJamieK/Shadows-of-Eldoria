@@ -1,8 +1,10 @@
 using System;
+using System.IO;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Threading;
 
 namespace Game
 {
@@ -322,7 +324,7 @@ namespace Game
             Console.ResetColor();
             Console.Write("Press any key to continue.\n>_");
             Tools.Loading();
-            Combat(false, "Dragon Malakar",15,100);
+            Combat(false, "DragonMalakar",25,200);
         }
         
         //Encounter tools
@@ -375,7 +377,7 @@ namespace Game
                             {
                                 if (Program.RandomEncounterCount >= 20)
                                 {
-                                    if (Program.specialEncounter4Occurred)
+                                    if (!Program.specialEncounter4Occurred)
                                     {
                                         SpecialEncounter4();
                                         Program.specialEncounter4Occurred = true;
@@ -394,6 +396,38 @@ namespace Game
             string n = " ";
             int p = 0;
             int h = 0;
+
+            string DragonMalakar = @"
+                            ==(W{==========-      /===-                        
+                              ||  (.--.)         /===-_---~~~~~~~~~------____  
+                              | \_,|**|,__      |===-~___                _,-' `
+                 -==\\        `\ ' `--'   ),    `//~\\   ~~~~`---.___.-~~      
+             ______-==|        /`\_. .__/\ \    | |  \\           _-~`         
+       __--~~~  ,-/-==\\      (   | .  |~~~~|   | |   `\        ,'             
+    _-~       /'    |  \\     )__/==0==-\<>/   / /      \      /               
+  .'        /       |   \\      /~\___/~~\/  /' /        \   /'                
+ /  ____  /         |    \`\.__/-~~   \  |_/'  /          \/'                  
+/-'~    ~~~~~---__  |     ~-/~         ( )   /'        _--~`                   
+                  \_|      /        _) | ;  ),   __--~~                        
+                    '~~--_/      _-~/- |/ \   '-~ \                            
+                   {\__--_/}    / \\_>-|)<__\      \                           
+                   /'   (_/  _-~  | |__>--<__|      |                          
+                  |   _/) )-~     | |__>--<__|      |                          
+                  / /~ ,_/       / /__>---<__/      |                          
+                 o-o _//        /-~_>---<__-~      /                           
+                 (^(~          /~_>---<__-      _-~                            
+                ,/|           /__>--<__/     _-~                               
+             ,//('(          |__>--<__|     /                  .----_          
+            ( ( '))          |__>--<__|    |                 /' _---_~\        
+         `-)) )) (           |__>--<__|    |               /'  /     ~\`\      
+        ,/,'//( (             \__>--<__\    \            /'  //        ||      
+      ,( ( ((, ))              ~-__>--<_~-_  ~--____---~' _/'/        /'       
+    `~/  )` ) ,/|                 ~-_~>--<_/-__       __-~ _/                  
+  ._-~//( )/ )) `                    ~~-'_/_/ /~~~~~~~__--~                    
+   ;'( ')/ ,)(                              ~~~~~~~~~~                         
+  ' ') '( (/                                                                   
+    '   '  `
+            ";
             if (random)
             {   
                 n = GetName();
@@ -419,23 +453,39 @@ namespace Game
                 Console.WriteLine("\u001b[1m<>=======================<>\u001b[0m");
                 Console.ResetColor();
                 Console.WriteLine("Power: "+p+"  health: "+h);
-                Console.WriteLine("         .-.            ");
-                Console.WriteLine("       __|=|__          ");
-                Console.WriteLine("      (_/`-`\\_)        ");
-                Console.WriteLine("      //\\___/\\\\      ");
-                Console.WriteLine("      <>/   \\<>        ");
-                Console.WriteLine("       \\|_._|/         ");
-                Console.WriteLine("        <_I_>           ");
-                Console.WriteLine("         |||            ");
-                Console.WriteLine("        /_|_\\          ");
-                Console.ForegroundColor = ConsoleColor.Blue;
-                Console.WriteLine("\u001b[1m<>==================<>\u001b[0m");
-                Console.ForegroundColor = ConsoleColor.Blue;
-                Console.WriteLine("\u001b[1m| (A)ttack (D)efend |\u001b[0m");
-                Console.ForegroundColor = ConsoleColor.Blue;
-                Console.WriteLine("\u001b[1m|   (R)un    (H)eal |\u001b[0m");
-                Console.ForegroundColor = ConsoleColor.Blue;
-                Console.WriteLine("\u001b[1m<>==================<>\u001b[0m");
+                if (name == "DragonMalakar")
+                {
+                    Console.ForegroundColor = ConsoleColor.DarkRed;
+                    Console.WriteLine(DragonMalakar);
+                    Console.ForegroundColor = ConsoleColor.Blue;
+                    Console.WriteLine("\u001b[1m<>==================<>\u001b[0m");
+                    Console.ForegroundColor = ConsoleColor.Blue;
+                    Console.WriteLine("\u001b[1m| (A)ttack (D)efend |\u001b[0m");
+                    Console.ForegroundColor = ConsoleColor.Blue;
+                    Console.WriteLine("\u001b[1m|   (R)un    (H)eal |\u001b[0m");
+                    Console.ForegroundColor = ConsoleColor.Blue;
+                    Console.WriteLine("\u001b[1m<>==================<>\u001b[0m");
+                }
+                else
+                {
+                    Console.WriteLine("         .-.            ");
+                    Console.WriteLine("       __|=|__          ");
+                    Console.WriteLine("      (_/`-`\\_)        ");
+                    Console.WriteLine("      //\\___/\\\\      ");
+                    Console.WriteLine("      <>/   \\<>        ");
+                    Console.WriteLine("       \\|_._|/         ");
+                    Console.WriteLine("        <_I_>           ");
+                    Console.WriteLine("         |||            ");
+                    Console.WriteLine("        /_|_\\          ");
+                    Console.ForegroundColor = ConsoleColor.Blue;
+                    Console.WriteLine("\u001b[1m<>==================<>\u001b[0m");
+                    Console.ForegroundColor = ConsoleColor.Blue;
+                    Console.WriteLine("\u001b[1m| (A)ttack (D)efend |\u001b[0m");
+                    Console.ForegroundColor = ConsoleColor.Blue;
+                    Console.WriteLine("\u001b[1m|   (R)un    (H)eal |\u001b[0m");
+                    Console.ForegroundColor = ConsoleColor.Blue;
+                    Console.WriteLine("\u001b[1m<>==================<>\u001b[0m");
+                }
                 Console.WriteLine("Potions: "+Program.currentPlayer.potion+" Health: "+Program.currentPlayer.health);
                 int pAttack = Program.currentPlayer.weaponValue + rnd.Next(1,4)+((Program.currentPlayer.currentClass==Player.PLayerClass.Warrior)?3:0);
                 string input = Tools.ReadLine();

@@ -1,10 +1,12 @@
 ﻿using System;
+using System.IO;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Threading;
 using System.IO;
+using System.Runtime.InteropServices;
 using System.Text.Json;
 using Figgle;
 
@@ -12,6 +14,13 @@ namespace Game
 {
     public class Program
     {
+        struct Rect
+        {
+            public int Left;
+            public int Top;
+            public int Right;
+            public int Bottom;
+        }
         public static bool specialEncounterOccurred = false;
         public static bool specialEncounter2Occurred = false;
         public static bool specialEncounter3Occurred = false;
@@ -23,6 +32,23 @@ namespace Game
         public static Random rnd = new Random();
         static void Main(string[] args)
         {
+            [DllImport("user32.dll")]
+            static extern IntPtr GetForegroundWindow();
+            [DllImport("user32.dll")]
+            static extern bool ShowWindow(IntPtr hWnd, int nCmdShow);
+            [DllImport("user32.dll")]
+            static extern bool GetWindowRect(IntPtr hWnd, out Rect lpRect);
+            [DllImport("user32.dll")]
+            static extern bool MoveWindow(IntPtr hWnd, int x, int y, int nWidth, int nHeight, bool bRepaint);
+            const int SW_MAXIMIZE = 3;
+            IntPtr consoleWindowHandle = GetForegroundWindow();
+            ShowWindow(consoleWindowHandle, SW_MAXIMIZE);
+            Rect screenRect;
+            GetWindowRect(consoleWindowHandle, out screenRect);
+            int width = screenRect.Right - screenRect.Left;
+            int height = screenRect.Bottom - screenRect.Top;
+            MoveWindow(consoleWindowHandle, screenRect.Left, screenRect.Top, width, height, true);
+
             if(!Directory.Exists("saves"))
             {
                 Directory.CreateDirectory("saves");
