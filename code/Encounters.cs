@@ -363,6 +363,9 @@ namespace Game
             Console.WriteLine("Eldoria's grateful populace, recognizing your indomitable valor, paid homage in a manner befitting heroes. ");
             Console.WriteLine("Three grand statues, one for each of you and your two faithful comrades, now grace the heart of the kingdom, standing as enduring symbols of your selfless heroism. ");
             Console.WriteLine("With this final act, the destiny of Eldoria was sealed, ensuring that the kingdom shall flourish throughout the ages.");
+            Console.WriteLine("");
+            Console.ResetColor();
+            Console.Write("Press any key to continue.\n>_");
             Tools.Loading();
             Program.Ending();
         }
