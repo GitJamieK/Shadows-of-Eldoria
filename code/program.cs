@@ -199,6 +199,19 @@ namespace Game
             Environment.Exit(0);
         }
 
+        public static void Ending()
+        {
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.Write("\x1b[1m");
+            Console.Write(FiggleFonts.Graffiti.Render("<Thanks for playing!>"));
+            Console.WriteLine(FiggleFonts.Graffiti.Render("<To be continued>"));
+            Console.Write("\x1b[0m");
+            Console.ResetColor();
+            Console.Write("Press any key to continue\n>_");
+            Tools.Loading();
+            System.Environment.Exit(0);
+        }
+
         //saves
         public static void Save()
         {
