@@ -1,6 +1,6 @@
 ﻿# Welcome to Shadows of Eldoria!
 
-2 import are needed to be installed before running the game!
+2 important things are needed to be installed before running the game!
 
 -Please download the windows terminal from the Microsoft store and run the game in that terminal for best results.
 
