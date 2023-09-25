@@ -176,7 +176,7 @@ namespace Game
             Console.WriteLine("");
             Console.WriteLine("As you drew near, the stranger turned to face you. Their countenance was shrouded ");
             Console.WriteLine("in mystery, but there was no mistaking the aura of strength that enveloped them. ");
-            Console.WriteLine("It was one of the twoi mighty knights. ");
+            Console.WriteLine("It was one of the two mighty knights. ");
             Console.WriteLine("");
             Console.ResetColor();
             Console.Write("Press any key to continue.\n>_");
@@ -567,7 +567,7 @@ namespace Game
                 if (input.ToLower() == "a"||input.ToLower()=="attack")
                 {
                     //Attack
-                    Console.WriteLine("with all your will and power you surge forth and slice your opnonent, as you swing your sword the "+n+" strikes back at you");
+                    Console.WriteLine("with all your will and power you surge forth and slice your opponent, as you swing your sword the "+n+" strikes back at you");
                     int damage = p - Program.currentPlayer.armorValue;
                     if(damage<0)
                         damage=0;
