@@ -32,22 +32,25 @@ namespace Game
         public static Random rnd = new Random();
         static void Main(string[] args)
         {
-            [DllImport("user32.dll")]
-            static extern IntPtr GetForegroundWindow();
-            [DllImport("user32.dll")]
-            static extern bool ShowWindow(IntPtr hWnd, int nCmdShow);
-            [DllImport("user32.dll")]
-            static extern bool GetWindowRect(IntPtr hWnd, out Rect lpRect);
-            [DllImport("user32.dll")]
-            static extern bool MoveWindow(IntPtr hWnd, int x, int y, int nWidth, int nHeight, bool bRepaint);
-            const int SW_MAXIMIZE = 3;
-            IntPtr consoleWindowHandle = GetForegroundWindow();
-            ShowWindow(consoleWindowHandle, SW_MAXIMIZE);
-            Rect screenRect;
-            GetWindowRect(consoleWindowHandle, out screenRect);
-            int width = screenRect.Right - screenRect.Left;
-            int height = screenRect.Bottom - screenRect.Top;
-            MoveWindow(consoleWindowHandle, screenRect.Left, screenRect.Top, width, height, true);
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+            {
+                [DllImport("user32.dll")]
+                static extern IntPtr GetForegroundWindow();
+                [DllImport("user32.dll")]
+                static extern bool ShowWindow(IntPtr hWnd, int nCmdShow);
+                [DllImport("user32.dll")]
+                static extern bool GetWindowRect(IntPtr hWnd, out Rect lpRect);
+                [DllImport("user32.dll")]
+                static extern bool MoveWindow(IntPtr hWnd, int x, int y, int nWidth, int nHeight, bool bRepaint);
+                const int SW_MAXIMIZE = 3;
+                IntPtr consoleWindowHandle = GetForegroundWindow();
+                ShowWindow(consoleWindowHandle, SW_MAXIMIZE);
+                Rect screenRect;
+                GetWindowRect(consoleWindowHandle, out screenRect);
+                int width = screenRect.Right - screenRect.Left;
+                int height = screenRect.Bottom - screenRect.Top;
+                MoveWindow(consoleWindowHandle, screenRect.Left, screenRect.Top, width, height, true);
+            }
 
             if(!Directory.Exists("saves/"))
             {
@@ -216,7 +219,7 @@ namespace Game
         public static void Save()
         {
             string path = "saves/" + currentPlayer.Id.ToString() + ".player";
-            string jsonString = JsonSerializer.Serialize(currentPlayer);
+            string jsonString = JsonSerializer.Serialize(currentPlayer, new JsonSerializerOptions { IncludeFields = true});
             File.WriteAllText(path, jsonString);
         }
 
@@ -231,7 +234,7 @@ namespace Game
             foreach (string p in paths)
             {
                 string jsonString = File.ReadAllText(p);
-                Player? player = JsonSerializer.Deserialize<Player>(jsonString);
+                Player? player = JsonSerializer.Deserialize<Player>(jsonString, new JsonSerializerOptions { IncludeFields = true});
                 if (player != null)
                 {
                     players.Add(player);
