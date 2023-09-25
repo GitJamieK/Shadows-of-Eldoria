@@ -49,9 +49,9 @@ namespace Game
             int height = screenRect.Bottom - screenRect.Top;
             MoveWindow(consoleWindowHandle, screenRect.Left, screenRect.Top, width, height, true);
 
-            if(!Directory.Exists("saves"))
+            if(!Directory.Exists("saves/"))
             {
-                Directory.CreateDirectory("saves");
+                Directory.CreateDirectory("saves/");
             }
             currentPlayer = Load(out bool newP);
             if(newP)
@@ -209,7 +209,7 @@ namespace Game
             Console.ResetColor();
             Console.Write("Press any key to continue\n>_");
             Tools.Loading();
-            System.Environment.Exit(0);
+            Program.Quit();
         }
 
         //saves
@@ -224,7 +224,7 @@ namespace Game
         {
             newP = false;
             Console.Clear();
-            string[] paths = Directory.GetFiles("saves");
+            string[] paths = Directory.GetFiles("saves/");
             List<Player> players = new List<Player>();
             int idCount=0;
 
@@ -254,7 +254,7 @@ namespace Game
 
                 try
                 {
-                    if(data[0]=="id")
+                    if(data.Length == 2 && data[0]=="id")
                     {
                         if(int.TryParse(data[1],out int id))
                         {
@@ -262,6 +262,7 @@ namespace Game
                             {
                                 if(player.Id==id)
                                 {
+                                    currentPlayer = player;
                                     return player;
                                 }
                             }
@@ -278,10 +279,11 @@ namespace Game
                             Console.ReadKey();
                         }
                     }
-                    else if(data[0]=="create")
+                    else if(data.Length == 1 && data[0]=="create")
                     {
                         Player newPlayer = NewStart(idCount);
                         newP = true;
+                        currentPlayer = newPlayer;
                         return newPlayer;
                     }
                     else
@@ -290,6 +292,7 @@ namespace Game
                         {
                             if(player.Name==data[0])
                             {
+                                currentPlayer = player;
                                 return player;
                             }
                         }

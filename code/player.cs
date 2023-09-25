@@ -23,7 +23,7 @@ namespace Game
             }
         }
         public int Id { get; set; }
-        public int coins = 500000; //TEMP AMOUNT
+        public int coins = 400;
         public int level = 1;
         public int xp = 0;
         public int health = 10;
@@ -58,14 +58,14 @@ namespace Game
 
         public int GetXP()
         {
-            int upper = (20*mods+50);
-            int lower = (15*mods+10);
+            int upper = (20*mods+70);
+            int lower = (15*mods+20);
             return Program.rnd.Next(lower, upper);
         }
 
         public int GetLevelUpValue()
         {
-            return 100*level+400;
+            return 100*level+200;
         }
 
         public bool CanLevelUp()
@@ -82,10 +82,18 @@ namespace Game
             {
                 xp -= GetLevelUpValue();
                 level++;
+
+                armorValue++;
+                weaponValue++;
+                potion+= 3;
+                coins += 200;
             }
             Console.Clear();
             Console.ForegroundColor = ConsoleColor.Green;
             Program.Print("Congrats! You are now level "+level+"!!");
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("");
+            Console.WriteLine("You've been rewarded 200 coins, 3 potions!, 1 armor upgrade and 1 weapon upgrade!");
             Console.ResetColor();
         }
     }

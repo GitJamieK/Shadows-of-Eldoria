@@ -122,8 +122,8 @@ namespace Game
             {
                 Console.WriteLine("insufficient coins!");
                 Console.WriteLine("");
-                Console.Write("Press any key to continue.\n>");
-                Console.ReadKey();
+                Console.Write("Press any key to continue.\n>_");
+                Tools.Loading();
             }
         }
     }

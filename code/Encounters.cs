@@ -59,7 +59,7 @@ namespace Game
             Console.ResetColor();
             Console.Write("Press any key to continue.\n>_");
             Tools.Loading();
-            Combat(false, "Queen",5,15);
+            Combat(false, "Queen",3,15);
             QueenAfterCombatText();
         }
         public static void QueenAfterCombatText()
@@ -324,7 +324,7 @@ namespace Game
             Console.ResetColor();
             Console.Write("Press any key to continue.\n>_");
             Tools.Loading();
-            Combat(false, "DragonMalakar",25,200);
+            Combat(false, "DragonMalakar",10,100);
             DragonMalakarAfterCombatText();
         }
         public static void DragonMalakarAfterCombatText()
@@ -389,7 +389,7 @@ namespace Game
             Program.RandomEncounterCount++;
             if (!Program.specialEncounterOccurred)
             {
-                if (Program.RandomEncounterCount >= 5)
+                if (Program.RandomEncounterCount >= 10)
                 {
                     SpecialEncounter();
                     Program.specialEncounterOccurred = true;
@@ -398,7 +398,7 @@ namespace Game
             }
             else
             {
-                if (Program.RandomEncounterCount >= 10)
+                if (Program.RandomEncounterCount >= 20)
                 {
                     if (!Program.specialEncounter2Occurred)
                     {
@@ -408,7 +408,7 @@ namespace Game
                     }
                     else
                     {
-                        if (Program.RandomEncounterCount >= 15)
+                        if (Program.RandomEncounterCount >= 30)
                         {
                             if (!Program.specialEncounter3Occurred)
                             {
@@ -418,7 +418,7 @@ namespace Game
                             }
                             else
                             {
-                                if (Program.RandomEncounterCount >= 20)
+                                if (Program.RandomEncounterCount >= 40)
                                 {
                                     if (!Program.specialEncounter4Occurred)
                                     {
@@ -440,6 +440,18 @@ namespace Game
             int p = 0;
             int h = 0;
 
+            string Queen = @"
+.
+                  .       |         .    .
+            .  *         -*-          *
+                 \        |         /   .
+.    .            .      /^\     .              .    .
+   *    |\   /\    /\  / / \ \  /\    /\   /|    *
+ .   .  |  \ \/ /\ \ / /     \ \ / /\ \/ /  | .     .
+         \ | _ _\/_ _ \_\_ _ /_/_ _\/_ _ \_/
+           \  *  *  *   \ \/ /  *  *  *  /
+            ` ~ ~ ~ ~ ~  ~\/~ ~ ~ ~ ~ ~ '
+            ";
             string DragonMalakar = @"
                             ==(W{==========-      /===-                        
                               ||  (.--.)         /===-_---~~~~~~~~~------____  
@@ -471,6 +483,17 @@ namespace Game
   ' ') '( (/                                                                   
     '   '  `
             ";
+            string NormalEnemie = @"
+         .-.            
+       __|=|__          
+      (_/`-`\_)        
+      //\___/\\      
+      <>/   \<>        
+       \|_._|/         
+        <_I_>           
+         |||            
+        /_|_\          
+        ";
             if (random)
             {   
                 n = GetName();
@@ -495,7 +518,9 @@ namespace Game
                 Console.ForegroundColor = ConsoleColor.Green;
                 Console.WriteLine("\u001b[1m<>=======================<>\u001b[0m");
                 Console.ResetColor();
+                Console.ForegroundColor = ConsoleColor.DarkRed;
                 Console.WriteLine("Power: "+p+"  health: "+h);
+                Console.ResetColor();
                 if (name == "DragonMalakar")
                 {
                     Console.ForegroundColor = ConsoleColor.DarkRed;
@@ -509,17 +534,9 @@ namespace Game
                     Console.ForegroundColor = ConsoleColor.Blue;
                     Console.WriteLine("\u001b[1m<>==================<>\u001b[0m");
                 }
-                else
+                else if (name == "Queen")
                 {
-                    Console.WriteLine("         .-.            ");
-                    Console.WriteLine("       __|=|__          ");
-                    Console.WriteLine("      (_/`-`\\_)        ");
-                    Console.WriteLine("      //\\___/\\\\      ");
-                    Console.WriteLine("      <>/   \\<>        ");
-                    Console.WriteLine("       \\|_._|/         ");
-                    Console.WriteLine("        <_I_>           ");
-                    Console.WriteLine("         |||            ");
-                    Console.WriteLine("        /_|_\\          ");
+                    Console.WriteLine(Queen);
                     Console.ForegroundColor = ConsoleColor.Blue;
                     Console.WriteLine("\u001b[1m<>==================<>\u001b[0m");
                     Console.ForegroundColor = ConsoleColor.Blue;
@@ -529,8 +546,23 @@ namespace Game
                     Console.ForegroundColor = ConsoleColor.Blue;
                     Console.WriteLine("\u001b[1m<>==================<>\u001b[0m");
                 }
+                else
+                {
+                    Console.WriteLine(NormalEnemie);
+                    Console.ForegroundColor = ConsoleColor.Blue;
+                    Console.WriteLine("\u001b[1m<>==================<>\u001b[0m");
+                    Console.ForegroundColor = ConsoleColor.Blue;
+                    Console.WriteLine("\u001b[1m| (A)ttack (D)efend |\u001b[0m");
+                    Console.ForegroundColor = ConsoleColor.Blue;
+                    Console.WriteLine("\u001b[1m|   (R)un    (H)eal |\u001b[0m");
+                    Console.ForegroundColor = ConsoleColor.Blue;
+                    Console.WriteLine("\u001b[1m<>==================<>\u001b[0m");
+                }
+                Console.ForegroundColor = ConsoleColor.Green;
                 Console.WriteLine("Potions: "+Program.currentPlayer.potion+" Health: "+Program.currentPlayer.health);
-                int pAttack = Program.currentPlayer.weaponValue + rnd.Next(1,4)+((Program.currentPlayer.currentClass==Player.PLayerClass.Warrior)?3:0);
+                Console.WriteLine("Armor: "+Program.currentPlayer.armorValue+" Weapon: "+Program.currentPlayer.weaponValue);
+                Console.ResetColor();
+                int pAttack = Program.currentPlayer.weaponValue + rnd.Next(2,5)+((Program.currentPlayer.currentClass==Player.PLayerClass.Warrior)?4:0);
                 string input = Tools.ReadLine();
                 if (input.ToLower() == "a"||input.ToLower()=="attack")
                 {
