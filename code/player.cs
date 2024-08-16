@@ -5,20 +5,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Game
-{
+namespace Game {
     [Serializable]
-    public class Player
-    {
+    public class Player {
         private string? _name;
-        public string? Name
-        {
-            get
-            {
+        public string? Name {
+            get {
                 return _name;
             }   
-            set
-            {
+            set {
                 _name = value;
             }
         }
@@ -37,49 +32,41 @@ namespace Game
         public enum PLayerClass {Mage, Archer, Warrior};
         public PLayerClass currentClass = PLayerClass.Warrior;
 
-        public int GetHealth()
-        {
+        public int GetHealth() {
             int upper = (2*mods+5);
             int lower = (mods+2);
             return Program.rnd.Next(lower,upper);
         }
-        public int GetPower()
-        {
+        public int GetPower() {
             int upper = (2*mods+2);
             int lower = (mods+1);
             return Program.rnd.Next(lower,upper);
         }
-        public int GetCoins()
-        {
+        public int GetCoins() {
             int upper = (15*mods+50);
             int lower = (10*mods+10);
             return Program.rnd.Next(lower,upper);
         }
 
-        public int GetXP()
-        {
+        public int GetXP() {
             int upper = (20*mods+70);
             int lower = (15*mods+20);
             return Program.rnd.Next(lower, upper);
         }
 
-        public int GetLevelUpValue()
-        {
+        public int GetLevelUpValue() {
             return 100*level+200;
         }
 
-        public bool CanLevelUp()
-        {
+        public bool CanLevelUp() {
             if(xp>=GetLevelUpValue())
                 return true;
             else
                 return false;
         }
 
-        public void LevelUp()
-        {
-            while(CanLevelUp())
-            {
+        public void LevelUp() {
+            while(CanLevelUp()) {
                 xp -= GetLevelUpValue();
                 level++;
 

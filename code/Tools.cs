@@ -6,19 +6,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Threading;
 
-namespace Game
-{
-    static class Tools
-    {
-        public static void Loading()
-        {
+namespace Game {
+    static class Tools {
+        public static void Loading() {
             char[] Frames = { '|', '/', '-', '\\' };
             
-            Thread animThread = new Thread(() => 
-            {
+            Thread animThread = new Thread(() => {
                 int i = 0;
-                while (!Console.KeyAvailable)
-                {
+                while (!Console.KeyAvailable) {
                     Console.Write(Frames[i % Frames.Length]);
                     Thread.Sleep(100);
                     Console.SetCursorPosition(Console.CursorLeft - 1, Console.CursorTop);
@@ -29,15 +24,12 @@ namespace Game
             animThread.Join();
             Console.ReadKey(true);
         }
-        public static string ReadLine()
-        {
+        public static string ReadLine() {
             string? readLine = Console.ReadLine();
-            if (readLine == null)
-            {
+            if (readLine == null) {
                 return"";
             }
-            else
-            {
+            else {
                 return readLine;
             }
         }    

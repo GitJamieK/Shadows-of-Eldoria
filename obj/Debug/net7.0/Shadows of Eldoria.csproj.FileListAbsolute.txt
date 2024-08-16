@@ -15,3 +15,21 @@ D:\Work\Shadows of Eldoria\obj\Debug\net7.0\Shadows of Eldoria.genruntimeconfig.
 D:\Work\Shadows of Eldoria\obj\Debug\net7.0\ref\Shadows of Eldoria.dll
 D:\Work\Shadows of Eldoria\bin\Debug\net7.0\Figgle.dll
 D:\Work\Shadows of Eldoria\obj\Debug\net7.0\Shadows of Eldoria.csproj.CopyComplete
+A:\Code projects\Shadows of Eldoria\bin\Debug\net7.0\Shadows of Eldoria.exe
+A:\Code projects\Shadows of Eldoria\bin\Debug\net7.0\Shadows of Eldoria.deps.json
+A:\Code projects\Shadows of Eldoria\bin\Debug\net7.0\Shadows of Eldoria.runtimeconfig.json
+A:\Code projects\Shadows of Eldoria\bin\Debug\net7.0\Shadows of Eldoria.dll
+A:\Code projects\Shadows of Eldoria\bin\Debug\net7.0\Shadows of Eldoria.pdb
+A:\Code projects\Shadows of Eldoria\bin\Debug\net7.0\Figgle.dll
+A:\Code projects\Shadows of Eldoria\obj\Debug\net7.0\Shadows of Eldoria.csproj.AssemblyReference.cache
+A:\Code projects\Shadows of Eldoria\obj\Debug\net7.0\Shadows of Eldoria.GeneratedMSBuildEditorConfig.editorconfig
+A:\Code projects\Shadows of Eldoria\obj\Debug\net7.0\Shadows of Eldoria.AssemblyInfoInputs.cache
+A:\Code projects\Shadows of Eldoria\obj\Debug\net7.0\Shadows of Eldoria.AssemblyInfo.cs
+A:\Code projects\Shadows of Eldoria\obj\Debug\net7.0\Shadows of Eldoria.csproj.CoreCompileInputs.cache
+A:\Code projects\Shadows of Eldoria\obj\Debug\net7.0\Shadows of Eldoria.sourcelink.json
+A:\Code projects\Shadows of Eldoria\obj\Debug\net7.0\Shadows .B56AE90D.Up2Date
+A:\Code projects\Shadows of Eldoria\obj\Debug\net7.0\Shadows of Eldoria.dll
+A:\Code projects\Shadows of Eldoria\obj\Debug\net7.0\refint\Shadows of Eldoria.dll
+A:\Code projects\Shadows of Eldoria\obj\Debug\net7.0\Shadows of Eldoria.pdb
+A:\Code projects\Shadows of Eldoria\obj\Debug\net7.0\Shadows of Eldoria.genruntimeconfig.cache
+A:\Code projects\Shadows of Eldoria\obj\Debug\net7.0\ref\Shadows of Eldoria.dll

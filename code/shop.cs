@@ -5,24 +5,19 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Game
-{
-    public class Shop
-    {
-        public static void LoadShop(Player p)
-        {
+namespace Game {
+    public class Shop {
+        public static void LoadShop(Player p) {
             RunShop(p);
         }
 
-        public static void RunShop(Player p)
-        {
+        public static void RunShop(Player p) {
             int potionP;
             int armorP;
             int weaponP;
             int difP;
             
-            while(true)
-            {
+            while(true) {
                 potionP = 20+10*p.mods;
                 armorP = 100*(p.armorValue+1);
                 weaponP = 100*p.weaponValue;
@@ -79,34 +74,27 @@ namespace Game
                 Console.WriteLine("\u001b[1m<>==================<>\u001b[0m");
 
                 string input = Tools.ReadLine().ToLower();
-                if(input=="w"||input=="weapon")
-                {
+                if(input=="w"||input=="weapon") {
                     TryBuy("weapon", weaponP, p);
                 }
-                else if(input=="a"||input=="armor")
-                {
+                else if(input=="a"||input=="armor") {
                     TryBuy("armor", armorP, p);
                 }
-                else if(input=="p"||input=="potion")
-                {
+                else if(input=="p"||input=="potion") {
                     TryBuy("potion", potionP, p);
                 }
-                else if(input=="d"||input=="difficulty mod")
-                {
+                else if(input=="d"||input=="difficulty mod") {
                     TryBuy("dif", difP, p);
                 }
-                else if(input=="q"||input=="quit")
-                {
+                else if(input=="q"||input=="quit") {
                     Program.Quit();
                 }
                 else if(input=="e"||input=="exit")
                     break;
             }
         }
-        static void TryBuy(string item, int cost, Player p)
-        {
-            if(p.coins>=cost)
-            {
+        static void TryBuy(string item, int cost, Player p) {
+            if(p.coins>=cost) {
                 if(item=="weapon")
                     p.weaponValue++;
                 else if(item=="armor")
@@ -118,8 +106,7 @@ namespace Game
 
                 p.coins-=cost;
             }
-            else
-            {
+            else {
                 Console.WriteLine("insufficient coins!");
                 Console.WriteLine("");
                 Console.Write("Press any key to continue.\n>_");

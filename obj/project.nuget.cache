@@ -1,10 +1,14 @@
 {
   "version": 2,
-  "dgSpecHash": "McbOqoV0wogF3p0iDiJRlMdA7GALhFQAk/I57K6tB1SojDfSAHf5dHeweipTJjEg2OYl5h3xfiekexqApiP3Rw==",
+  "dgSpecHash": "gH9cHcbFnvY=",
   "success": true,
-  "projectFilePath": "D:\\Work\\Shadows of Eldoria\\Shadows of Eldoria.csproj",
+  "projectFilePath": "A:\\Code projects\\Shadows of Eldoria\\Shadows of Eldoria.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\Jamie\\.nuget\\packages\\figgle\\0.5.1\\figgle.0.5.1.nupkg.sha512"
+    "C:\\Users\\kofle\\.nuget\\packages\\figgle\\0.5.1\\figgle.0.5.1.nupkg.sha512",
+    "C:\\Users\\kofle\\.nuget\\packages\\microsoft.netcore.app.ref\\7.0.20\\microsoft.netcore.app.ref.7.0.20.nupkg.sha512",
+    "C:\\Users\\kofle\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\7.0.20\\microsoft.windowsdesktop.app.ref.7.0.20.nupkg.sha512",
+    "C:\\Users\\kofle\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\7.0.20\\microsoft.aspnetcore.app.ref.7.0.20.nupkg.sha512",
+    "C:\\Users\\kofle\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\7.0.20\\microsoft.netcore.app.host.win-x64.7.0.20.nupkg.sha512"
   ],
   "logs": []
 }

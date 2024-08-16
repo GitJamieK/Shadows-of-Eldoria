@@ -40,26 +40,24 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Jamie\\.nuget\\packages\\": {}
+    "C:\\Users\\kofle\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Work\\Shadows of Eldoria\\Shadows of Eldoria.csproj",
+      "projectUniqueName": "A:\\Code projects\\Shadows of Eldoria\\Shadows of Eldoria.csproj",
       "projectName": "Shadows of Eldoria",
-      "projectPath": "D:\\Work\\Shadows of Eldoria\\Shadows of Eldoria.csproj",
-      "packagesPath": "C:\\Users\\Jamie\\.nuget\\packages\\",
-      "outputPath": "D:\\Work\\Shadows of Eldoria\\obj\\",
+      "projectPath": "A:\\Code projects\\Shadows of Eldoria\\Shadows of Eldoria.csproj",
+      "packagesPath": "C:\\Users\\kofle\\.nuget\\packages\\",
+      "outputPath": "A:\\Code projects\\Shadows of Eldoria\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Jamie\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "C:\\Users\\kofle\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net7.0"
       ],
       "sources": {
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -72,6 +70,11 @@
         "warnAsError": [
           "NU1605"
         ]
+      },
+      "restoreAuditProperties": {
+        "enableAudit": "true",
+        "auditLevel": "low",
+        "auditMode": "direct"
       }
     },
     "frameworks": {
@@ -94,12 +97,30 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
+        "downloadDependencies": [
+          {
+            "name": "Microsoft.AspNetCore.App.Ref",
+            "version": "[7.0.20, 7.0.20]"
+          },
+          {
+            "name": "Microsoft.NETCore.App.Host.win-x64",
+            "version": "[7.0.20, 7.0.20]"
+          },
+          {
+            "name": "Microsoft.NETCore.App.Ref",
+            "version": "[7.0.20, 7.0.20]"
+          },
+          {
+            "name": "Microsoft.WindowsDesktop.App.Ref",
+            "version": "[7.0.20, 7.0.20]"
+          }
+        ],
         "frameworkReferences": {
           "Microsoft.NETCore.App": {
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.304\\RuntimeIdentifierGraph.json"
       }
     }
   }
