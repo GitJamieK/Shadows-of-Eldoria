@@ -66,22 +66,7 @@ namespace Game {
         }
 
         public void LevelUp() {
-            while(CanLevelUp()) {
-                xp -= GetLevelUpValue();
-                level++;
-
-                armorValue++;
-                weaponValue++;
-                potion+= 3;
-                coins += 200;
-            }
-            Console.Clear();
-            Console.ForegroundColor = ConsoleColor.Green;
-            Program.Print("Congrats! You are now level "+level+"!!");
-            Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine("");
-            Console.WriteLine("You've been rewarded 200 coins, 3 potions!, 1 armor upgrade and 1 weapon upgrade!");
-            Console.ResetColor();
+            LevelUpLogic.levelUpLogic(this);
         }
     }
 }
